@@ -6,9 +6,8 @@
     <title>Our Family History</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom styles can be added here if needed */
         body {
-            font-family: 'Inter', sans-serif; /* Using Inter font as recommended */
+            font-family: 'Inter', sans-serif;
         }
         .content-section {
             @apply bg-white p-6 rounded-lg shadow-md mb-8;
@@ -25,11 +24,40 @@
         .main-link-button {
             @apply inline-block bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 transition duration-150 ease-in-out text-lg;
         }
+        /* Initially hide the main content */
+        #mainContent {
+            display: none;
+        }
+        /* Styling for the password prompt area if needed */
+        #passwordPromptContainer {
+            @apply fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50 p-4;
+        }
+        #passwordPromptBox {
+            @apply bg-white p-8 rounded-lg shadow-xl text-center;
+        }
+        #passwordInput {
+            @apply border border-gray-300 p-2 rounded-md w-full mb-4;
+        }
+        #passwordSubmitButton {
+            @apply bg-blue-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-700;
+        }
+        #errorMessage {
+            @apply text-red-500 mt-2 text-sm;
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col items-center pt-10 pb-10 px-4">
 
-    <div class="container mx-auto max-w-3xl">
+    <div id="passwordPromptContainer">
+        <div id="passwordPromptBox">
+            <h2 class="text-xl font-semibold mb-4 text-gray-700">Enter Password</h2>
+            <input type="password" id="passwordInput" placeholder="Password">
+            <button id="passwordSubmitButton">Submit</button>
+            <p id="errorMessage" class="hidden">Incorrect password. Please try again.</p>
+        </div>
+    </div>
+
+    <div id="mainContent" class="container mx-auto max-w-3xl">
 
         <header class="text-center mb-10">
             <h1 class="text-4xl font-bold text-gray-800 mb-4">Welcome to Our Family's Shared History</h1>
@@ -83,8 +111,70 @@
     </div>
 
     <script>
-        // Set current year in footer
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        // --- Password Protection Script ---
+        // IMPORTANT: Replace 'YOUR_PASSWORD_HERE' with your actual desired password.
+        // This password will be visible in the page source, so it's not truly secure.
+        const correctPassword = 'HartReunion'; // <--- CHANGE THIS PASSWORD!
+
+        const passwordPromptContainer = document.getElementById('passwordPromptContainer');
+        const passwordInput = document.getElementById('passwordInput');
+        const passwordSubmitButton = document.getElementById('passwordSubmitButton');
+        const mainContent = document.getElementById('mainContent');
+        const errorMessage = document.getElementById('errorMessage');
+
+        function checkPassword() {
+            const enteredPassword = passwordInput.value;
+            if (enteredPassword === correctPassword) {
+                passwordPromptContainer.style.display = 'none'; // Hide the prompt
+                mainContent.style.display = 'block';          // Show the main content
+            } else {
+                errorMessage.classList.remove('hidden'); // Show error message
+                passwordInput.value = ''; // Clear the input
+                passwordInput.focus();
+            }
+        }
+
+        passwordSubmitButton.addEventListener('click', checkPassword);
+        // Allow submitting with Enter key
+        passwordInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                checkPassword();
+            }
+        });
+
+        // Set current year in footer (only if content is shown)
+        if (mainContent.style.display === 'block') { // This check might need adjustment based on initial state
+             document.getElementById('currentYear').textContent = new Date().getFullYear();
+        }
+        // A better way to ensure footer year is set after content is shown:
+        // We can set it once the password is correct.
+        // The currentYear span is inside mainContent, so it's fine as is,
+        // but if it were outside, we'd call this inside checkPassword's success branch.
+        // For now, let's assume it's fine, but if footer is always visible, this needs to be outside.
+        // Given the structure, the footer is part of mainContent, so it's hidden initially.
+        // Let's move the year setting to be more robust.
+
+        // Function to set year, call after content is displayed
+        function initializePage() {
+            if(document.getElementById('currentYear')) { // Check if element exists
+                 document.getElementById('currentYear').textContent = new Date().getFullYear();
+            }
+        }
+        // Modify checkPassword to call initializePage
+        function checkPassword() {
+            const enteredPassword = passwordInput.value;
+            if (enteredPassword === correctPassword) {
+                passwordPromptContainer.style.display = 'none';
+                mainContent.style.display = 'block';
+                initializePage(); // Set year once content is visible
+            } else {
+                errorMessage.classList.remove('hidden');
+                passwordInput.value = '';
+                passwordInput.focus();
+            }
+        }
+
+
     </script>
 
 </body>
