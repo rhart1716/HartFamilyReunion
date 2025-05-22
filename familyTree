@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Tree</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .pdf-container {
+            width: 90%; /* Adjust width as needed */
+            max-width: 1000px; /* Maximum width for larger screens */
+            height: 80vh; /* Adjust height as needed, vh is viewport height */
+            margin: 2rem auto; /* Centers the container and adds some margin */
+            border: 1px solid #ccc; /* Optional border */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional shadow for better appearance */
+        }
+        .pdf-iframe {
+            width: 100%;
+            height: 100%;
+            border: none; /* Remove iframe default border */
+        }
+        .fallback-link {
+            @apply text-center p-4 text-blue-600 hover:text-blue-800 underline;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-6">
+        <header class="text-center my-6">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-800">Hart Family Tree</h1>
+            <p class="text-md text-gray-600 mt-2">
+                Here is a graphic view of our family tree.
+            </p>
+            <p class="mt-4">
+                <a href="index.html" class="text-blue-600 hover:text-blue-800 underline">&larr; Back to Home Page</a>
+            </p>
+        </header>
+
+        <div class="pdf-container">
+            <iframe src="familyTreeMaleLine.pdf" type="application/pdf" class="pdf-iframe" title="Family Tree Male Line PDF">
+                <p class="fallback-link">
+                    Your browser does not support viewing PDF files directly.
+                    <a href="familyTreeMaleLine.pdf">Click here to download or view the PDF.</a>
+                </p>
+            </iframe>
+        </div>
+
+        <footer class="text-center mt-8 py-6 border-t border-gray-300">
+            <p class="text-sm text-gray-500">&copy; <span id="currentYear"></span> Our Family. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
