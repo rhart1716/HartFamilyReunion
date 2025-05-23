@@ -111,13 +111,15 @@
         </div>
     </div>
 
-    <div id="mainContent" class="container mx-auto max-w-3xl"> <header class="text-center mb-12 py-10 shadow-lg" style="background-color: #386641; border-radius: 0.5rem;">
+    <div id="mainContent" class="container mx-auto max-w-3xl">
+        <header class="text-center mb-12 py-10 shadow-lg" style="background-color: #386641; border-radius: 0.5rem;">
             <h1 class="text-4xl md:text-5xl font-bold irish-header-alt-font mb-4" style="color: #F2E8CF;">Welcome to Our Family's Shared History</h1>
             <p class="text-lg" style="color: #D4C2AD; padding-left: 1rem; padding-right: 1rem;">
                 This website is a place to review and collaboratively build our family tree.
                 Your contributions and insights are invaluable.
             </p>
         </header>
+
         <div class="flex flex-wrap justify-center gap-4 md:gap-6 mb-12 text-center">
             <a href="familyTree.html" class="main-link-button text-white" style="background-color: #588157; border-color: #3A5A40;">
                 View Detailed Tree Data
@@ -127,6 +129,9 @@
             </a>
             <a href="photoAlbums.html" class="main-link-button text-white font-semibold" style="background-color: #D97706; /* Amber-600 */ border-color: #B45309; /* Amber-700 */">
                 View Family Photo Albums
+            </a>
+            <a href="/webCal/2025/fullyearlinked.html" class="main-link-button text-white font-semibold" style="background-color: #3E863D; border-color: #2A5D29;">
+                View Family Calendar
             </a>
         </div>
         
@@ -141,10 +146,11 @@
                 </a>
             </div>
         </section>
-       
+        
         <footer class="text-center mt-12 py-6 border-t" style="border-color: #A3B18A;">
             <p class="font-semibold" style="color: #3A5A40;">&copy; <span id="currentYear"></span> Hart Family. All rights reserved.</p>
-            <p class="text-sm mt-1" style="color: #D97706;">Fáilte!</p> </footer>
+            <p class="text-sm mt-1" style="color: #D97706;">Fáilte!</p>
+        </footer>
 
     </div>
 
@@ -158,26 +164,33 @@
         const mainContent = document.getElementById('mainContent');
         const errorMessage = document.getElementById('errorMessage');
 
+        // Function to initialize page elements like the current year in the footer
         function initializePage() {
             if(document.getElementById('currentYear')) {
                 document.getElementById('currentYear').textContent = new Date().getFullYear();
             }
         }
 
+        // Function to check the entered password
         function checkPassword() {
             const enteredPassword = passwordInput.value;
             if (enteredPassword === correctPassword) {
+                // If password is correct, hide the prompt and show the main content
                 passwordPromptContainer.style.display = 'none'; 
-                mainContent.style.display = 'block';    
-                initializePage(); // Set year once content is visible
+                mainContent.style.display = 'block';     
+                initializePage(); // Set year and other initial elements once content is visible
             } else {
+                // If password is incorrect, show an error message
                 errorMessage.classList.remove('hidden'); 
-                passwordInput.value = ''; 
-                passwordInput.focus();
+                passwordInput.value = ''; // Clear the password input
+                passwordInput.focus(); // Set focus back to the password input
             }
         }
 
+        // Event listener for the submit button click
         passwordSubmitButton.addEventListener('click', checkPassword);
+        
+        // Event listener for pressing Enter in the password input field
         passwordInput.addEventListener('keypress', function(event) {
             if (event.key === 'Enter') {
                 checkPassword();
