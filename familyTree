@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html xml:lang="en" lang="en" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+<head dir="ltr" lang="en">
+    <title>Hart Family Tree - Surnames</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=0.5, maximum-scale=10.0, user-scalable=yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="generator" content="Gramps AIO64-5.2.3-r1-aa03f5a http://gramps-project.org/" />
+    <meta name="author" content="" />
+    <meta name="robots" content="noindex" />
+    <meta name="googlebot" content="noindex" />
+    <link href="images/favicon2.ico" rel="shortcut icon" type="image/x-icon" /> <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;700&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'EB Garamond', serif;
+            color: #433A3F; /* Dark, slightly muted brown/purple for text */
+            /* Ensure no default margin from Gramps CSS interferes if some is still active */
+            margin: 0; 
+            padding: 0;
+        }
+        .irish-header-alt-font {
+            font-family: 'IM Fell English SC', serif;
+        }
+        /* Replicate essential Gramps nav structure if needed, or style anew */
+        /* The JS navFunction might rely on specific class names like 'nav' and 'responsive' */
+        .nav.responsive {
+            /* Basic responsive styling for the nav if Gramps CSS is fully disabled */
+            display: block;
+            position: absolute;
+            top: 60px; /* Adjust as needed */
+            left: 0;
+            right: 0;
+            background-color: #588157; /* Example color */
+            z-index: 10;
+        }
+        .nav.responsive li {
+            display: block;
+            text-align: center;
+        }
+        /* Styling for the GoToTop button */
+        #gototop {
+            background-color: #588157; /* Muted Green */
+            color: white;
+            border: none;
+            border-radius: 9999px; /* full */
+            padding: 0.75rem; /* p-3 */
+            position: fixed;
+            bottom: 1rem; /* bottom-4 */
+            right: 1rem; /* right-4 */
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); /* shadow-lg */
+            cursor: pointer;
+            display: none; /* Initially hidden by JS */
+            z-index: 50;
+        }
+        #gototop svg.triangle {
+            width: 1.5em;
+            height: 1.5em;
+            fill: currentColor;
+        }
+        /* Table styling */
+        .surnamelist th, .surnamelist td {
+            border: 1px solid #A3B18A; /* Lighter Muted Green Border */
+            padding: 0.5rem; /* p-2 */
+            text-align: left;
+        }
+        .surnamelist th {
+            background-color: #588157; /* Muted Green */
+            color: #F2E8CF; /* Creamy off-white */
+            font-weight: bold;
+        }
+        .surnamelist .ColumnLetter {
+            font-family: 'IM Fell English SC', serif;
+            color: #3A5A40; /* Darker Muted Green */
+            font-weight: bold;
+            width: 3em; /* Give letter column a bit of space */
+        }
+        .surnamelist a {
+            color: #588157; /* Muted Green for links */
+            text-decoration: underline;
+        }
+        .surnamelist a:hover {
+            color: #D97706; /* Amber-600 for link hover */
+        }
+         /* Hide the default navIcon if JS doesn't remove it */
+        .navIcon.hidden-by-default {
+            display: none;
+        }
+    </style>
+    <script>
+        function navFunction() {
+            var x = document.getElementById("dropmenu");
+            // Check if Tailwind's 'hidden' class is being used or if direct style manipulation is better
+            if (x.classList.contains("hidden")) { // Assuming mobile nav starts hidden by Tailwind
+                x.classList.remove("hidden");
+                x.classList.add("block", "absolute", "w-full", "left-0", "top-full", "shadow-lg", "md:hidden"); // Example mobile dropdown style
+                x.style.backgroundColor = '#A3B18A'; // Match nav color
+            } else {
+                x.classList.add("hidden");
+                x.classList.remove("block", "absolute", "w-full", "left-0", "top-full", "shadow-lg", "md:hidden");
+            }
+        }
+    </script>
+</head>
+<body class="bg-gradient-to-br from-beige-100 to-green-100">
+    <div id="outerwrapper" class="min-h-screen flex flex-col">
+        <div id="header" class="p-4 flex justify-between items-center relative" style="background-color: #386641;">
+            <h1 id="SiteTitle" class="irish-header-alt-font text-2xl md:text-3xl" style="color: #F2E8CF;">Hart Family Tree</h1>
+            <button href="javascript:void(0);" class="navIcon text-2xl md:hidden" onclick="navFunction()" style="color: #F2E8CF;">&#8801;</button>
+        </div>
+
+        <div id="nav" role="navigation" class="shadow-md" style="background-color: #A3B18A;">
+            <div class="container mx-auto">
+                <ul id="dropmenu" class="nav hidden md:flex md:space-x-6 md:justify-center md:py-3">
+                    <li><a href="individuals.html" title="Individuals" class="block py-2 px-4 md:p-0 text-white hover:text-[#F2E8CF]">Individuals</a></li>
+                    <li class="CurrentSection"><a href="index.html" title="Surnames" class="block py-2 px-4 md:p-0 font-bold text-[#F2E8CF]">Surnames</a></li>
+                    <li><a href="updates.html" title="Updates" class="block py-2 px-4 md:p-0 text-white hover:text-[#F2E8CF]">Updates</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <button id="gototop" onclick="GoToTop()" title="Go to top">
+            <svg class="triangle" viewBox="0 0 100 100">
+                <polygon points="0,100 100,100, 50,10"></polygon>
+            </svg>
+        </button>
+    
+        <script>
+            var gototop = document.getElementById("gototop");
+            window.onscroll = function() {scrollFunction()}; // Renamed to avoid conflict if any
+            function scrollFunction() {
+              if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                gototop.style.display = "block";
+              } else {
+                gototop.style.display = "none";
+              }
+            }
+            function GoToTop() {
+              document.body.scrollTop = 0;
+              document.documentElement.scrollTop = 0;
+            }
+        </script>
+
+        <div id="surnames" class="content container mx-auto max-w-4xl p-6 bg-[#FCFBF4] rounded-xl shadow-xl border-2 border-[#588157] mt-8 mb-8 flex-grow">
+            <p id="description" class="mb-6 leading-relaxed">
+            This page contains an index of all the surnames in the database. Selecting a link will lead to a list of individuals in the database with this same surname.
+            </p>
+            <div id="ltr" class="mb-6">
+                <ul class="ltr flex flex-wrap gap-2 justify-center">
+                    <li><a href="#A" title="Alphabet Menu: A" class="block bg-[#A3B18A] text-white px-3 py-1 rounded-md hover:bg-[#588157] transition-colors">A</a></li>
+                    <li><a href="#B" title="Alphabet Menu: B" class="block bg-[#A3B18A] text-white px-3 py-1 rounded-md hover:bg-[#588157] transition-colors">B</a></li>
+                    <li><a href="#C" title="Alphabet Menu: C" class="block bg-[#A3B18A] text-white px-3 py-1 rounded-md hover:bg-[#588157] transition-colors">C</a></li>
+                    <li><a href="#D" title="Alphabet Menu: D" class="block bg-[#A3B18A] text-white px-3 py-1 rounded-md hover:bg-[#588157] transition-colors">D</a></li>
+                    <li><a href="#E" title="Alphabet Menu: E" class="block bg-[#A3B18A] text-white px-3 py-1 rounded-md hover:bg-[#588157] transition-colors">E</a></li>
+                    <li><a href="#F" title="Alphabet Menu: F" class="block bg-[#A3B18A] text-white px-3 py-1 rounded-md hover:bg-[#588157] transition-colors">F</a></li>
+                    <li><a href="#G" title="Alphabet Menu: G" class="block bg-[#A3B18A] text-white px-3 py-1 rounded-md hover:bg-[#588157] transition-colors">G</a></li>
+                    <li><a href="#H" title="Alphabet Menu: H" class="block bg-[#A3B18A] text-white px-3 py-1 rounded-md hover:bg-[#588157] transition-colors">H</a></li>
+                    <li><a href="#K" title="Alphabet Menu: K" class="block bg-[#A3B18A] text-white px-3 py-1 rounded-md hover:bg-[#588157] transition-colors">K</a></li>
+                    <li><a href="#L" title="Alphabet Menu: L" class="block bg-[#A3B18A] text-white px-3 py-1 rounded-md hover:bg-[#588157] transition-colors">L</a></li>
+                    <li><a href="#M" title="Alphabet Menu: M" class="block bg-[#A3B18A] text-white px-3 py-1 rounded-md hover:bg-[#588157] transition-colors">M</a></li>
+                    <li><a href="#N" title="Alphabet Menu: N" class="block bg-[#A3B18A] text-white px-3 py-1 rounded-md hover:bg-[#588157] transition-colors">N</a></li>
+                    <li><a href="#O" title="Alphabet Menu: O" class="block bg-[#A3B18A] text-white px-3 py-1 rounded-md hover:bg-[#588157] transition-colors">O</a></li>
+                    <li><a href="#P" title="Alphabet Menu: P" class="block bg-[#A3B18A] text-white px-3 py-1 rounded-md hover:bg-[#588157] transition-colors">P</a></li>
+                    <li><a href="#R" title="Alphabet Menu: R" class="block bg-[#A3B18A] text-white px-3 py-1 rounded-md hover:bg-[#588157] transition-colors">R</a></li>
+                    <li><a href="#S" title="Alphabet Menu: S" class="block bg-[#A3B18A] text-white px-3 py-1 rounded-md hover:bg-[#588157] transition-colors">S</a></li>
+                    <li><a href="#T" title="Alphabet Menu: T" class="block bg-[#A3B18A] text-white px-3 py-1 rounded-md hover:bg-[#588157] transition-colors">T</a></li>
+                    <li><a href="#V" title="Alphabet Menu: V" class="block bg-[#A3B18A] text-white px-3 py-1 rounded-md hover:bg-[#588157] transition-colors">V</a></li>
+                    <li><a href="#W" title="Alphabet Menu: W" class="block bg-[#A3B18A] text-white px-3 py-1 rounded-md hover:bg-[#588157] transition-colors">W</a></li>
+                </ul>
+            </div>
+            <table class="infolist primobjlist surnamelist ltr w-full border-collapse" id="SortByName">
+                <thead>
+                    <tr>
+                        <th class="ColumnLetter">Letter</th>
+                        <th class="ColumnSurname"><a href="index.html" title="Surnames">Surname</a></th>
+                        <th class="ColumnQuantity"><a href="surnames_count.html" title="Number of People">Number of People</a></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class = "BeginLetter">
+                        <td class="ColumnLetter"><a id="A" name="A" title="Surnames beginning with letter 'A' LATIN CAPITAL LETTER A">A</a></td>
+                        <td class="ColumnSurname"><a href="srn/e/0/6ca78746acf56af3a071934d27eb2c0e.html" title="Ashton starting with LATIN CAPITAL LETTER A">Ashton</a></td>
+                        <td class="ColumnQuantity">1</td>
+                    </tr>
+                    <tr class = "BeginLetter">
+                        <td class="ColumnLetter"><a id="B" name="B" title="Surnames beginning with letter 'B' LATIN CAPITAL LETTER B">B</a></td>
+                        <td class="ColumnSurname"><a href="srn/4/6/d9e35b01bbabb46da6bcbfc1261dc164.html" title="Baily starting with LATIN CAPITAL LETTER B">Baily</a></td>
+                        <td class="ColumnQuantity">4</td>
+                    </tr>
+                    <tr>
+                        <td class="ColumnLetter"></td>
+                        <td class="ColumnSurname"><a href="srn/b/f/36661b3adc7f4c716e442fed57c12bfb.html" title="Barry starting with LATIN CAPITAL LETTER B">Barry</a></td>
+                        <td class="ColumnQuantity">1</td>
+                    </tr>
+                    <tr>
+						<td class="ColumnLetter"></td>
+						<td class="ColumnSurname"><a href="srn/9/a/4be90ed9c41356ec34247e49aec714a9.html" title="Bruce starting with LATIN CAPITAL LETTER B">Bruce</a></td>
+						<td class="ColumnQuantity">1</td>
+					</tr>
+					<tr>
+						<td class="ColumnLetter"></td>
+						<td class="ColumnSurname"><a href="srn/6/3/7a69148e40175bc6819dea1ee4d10336.html" title="Burdick starting with LATIN CAPITAL LETTER B">Burdick</a></td>
+						<td class="ColumnQuantity">8</td>
+					</tr>
+					<tr>
+						<td class="ColumnLetter"></td>
+						<td class="ColumnSurname"><a href="srn/f/2/8c3c80c312264cfac0b797b2aa50d22f.html" title="Burke starting with LATIN CAPITAL LETTER B">Burke</a></td>
+						<td class="ColumnQuantity">1</td>
+					</tr>
+					<tr>
+						<td class="ColumnLetter"></td>
+						<td class="ColumnSurname"><a href="srn/1/b/61ef307937f6449728ac40decb9795b1.html" title="Byrne starting with LATIN CAPITAL LETTER B">Byrne</a></td>
+						<td class="ColumnQuantity">1</td>
+					</tr>
+					<tr class = "BeginLetter">
+						<td class="ColumnLetter"><a id="C" name="C" title="Surnames beginning with letter 'C' LATIN CAPITAL LETTER C">C</a></td>
+						<td class="ColumnSurname"><a href="srn/3/1/e00a72212283d0501d8528ce6703d713.html" title="Caschera starting with LATIN CAPITAL LETTER C">Caschera</a></td>
+						<td class="ColumnQuantity">3</td>
+					</tr>
+					<tr>
+						<td class="ColumnLetter"></td>
+						<td class="ColumnSurname"><a href="srn/f/b/4c4844cc040e8cc73408c3bad7cc7ebf.html" title="Clifford starting with LATIN CAPITAL LETTER C">Clifford</a></td>
+						<td class="ColumnQuantity">4</td>
+					</tr>
+					<tr>
+						<td class="ColumnLetter"></td>
+						<td class="ColumnSurname"><a href="srn/2/a/9216d15e59042841715dc1ee02edaea2.html" title="Connelly starting with LATIN CAPITAL LETTER C">Connelly</a></td>
+						<td class="ColumnQuantity">3</td>
+					</tr>
+                    <tr class = "BeginLetter">
+						<td class="ColumnLetter"><a id="W" name="W" title="Surnames beginning with letter 'W' LATIN CAPITAL LETTER W">W</a></td>
+						<td class="ColumnSurname"><a href="srn/5/1/7fe70fef470fcc46826966e201147015.html" title="Wallace starting with LATIN CAPITAL LETTER W">Wallace</a></td>
+						<td class="ColumnQuantity">2</td>
+					</tr>
+					<tr>
+						<td class="ColumnLetter"></td>
+						<td class="ColumnSurname"><a href="srn/9/1/f98fb670e47c7c2df9e47b17f9153319.html" title="Walsh starting with LATIN CAPITAL LETTER W">Walsh</a></td>
+						<td class="ColumnQuantity">4</td>
+					</tr>
+					<tr>
+						<td class="ColumnLetter"></td>
+						<td class="ColumnSurname"><a href="srn/a/1/b4768068d923cf546f5f97629f17651a.html" title="Waterman starting with LATIN CAPITAL LETTER W">Waterman</a></td>
+						<td class="ColumnQuantity">1</td>
+					</tr>
+					<tr>
+						<td class="ColumnLetter"></td>
+						<td class="ColumnSurname"><a href="srn/8/3/611b4a172dfc74b73b98aa550a5e1438.html" title="Wentz starting with LATIN CAPITAL LETTER W">Wentz</a></td>
+						<td class="ColumnQuantity">2</td>
+					</tr>
+					<tr>
+						<td class="ColumnLetter"></td>
+						<td class="ColumnSurname"><a href="srn/b/e/6510f2f5e19a958bd8213eb3227ecceb.html" title="Wirth starting with LATIN CAPITAL LETTER W">Wirth</a></td>
+						<td class="ColumnQuantity">1</td>
+					</tr>
+					<tr>
+						<td class="ColumnLetter"></td>
+						<td class="ColumnSurname"><a href="srn/1/1/f2b0c941386d021c0b41e97811517411.html" title="Wright starting with LATIN CAPITAL LETTER W">Wright</a></td>
+						<td class="ColumnQuantity">1</td>
+					</tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="fullclear"></div> <div id="footer" class="text-center py-6 border-t mt-auto" style="border-color: #A3B18A;">
+            <p id="createdate" class="text-sm" style="color: #587458;">
+            Generated by <a href="http://gramps-project.org/" class="underline hover:text-[#D97706]">Gramps</a> AIO64-5.2.3-r1-aa03f5a on May 21, 2025
+            </p>
+            <p id="copyright" class="font-semibold mt-1" style="color: #3A5A40;">
+            &copy; <span id="currentYear"></span> Hart Family. All rights reserved.
+            </p>
+            <p class="text-sm mt-1" style="color: #D97706;">Fáilte!</p>
+        </div>
+    </div>
+    <script>
+        // Set current year in footer
+        if(document.getElementById('currentYear')) {
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        }
+        // Ensure navFunction correctly targets the dropmenu and applies Tailwind classes for visibility
+        // The script tag for navFunction is defined earlier, but let's ensure it's robust.
+        // The previous navFunction in the <head> might need adjustment if Tailwind classes are used.
+        // Here's a slightly adjusted nav function to work with Tailwind's 'hidden' class primarily for the mobile menu state:
+        // (You can consolidate this with the one in the <head> or replace it)
+        /*
+        function updatedNavFunction() {
+            var x = document.getElementById("dropmenu");
+            if (x.classList.contains("hidden")) {
+                x.classList.remove("hidden");
+                x.classList.add("block"); // Or 'flex flex-col' for stacking items
+            } else {
+                x.classList.add("hidden");
+                x.classList.remove("block");
+            }
+        }
+        // If the navIcon button uses updatedNavFunction:
+        // document.querySelector('.navIcon').onclick = updatedNavFunction;
+        */
+    </script>
+</body>
+</html>
+
