@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hart Family History</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;700&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'EB Garamond', serif;
+            color: #433A3F; /* Dark, slightly muted brown/purple for text */
+        }
+        .irish-header-alt-font {
+            font-family: 'IM Fell English SC', serif;
+        }
+        /* Password Prompt Styling */
+        #passwordPromptContainer {
+            background-color: rgba(56, 102, 65, 0.85); /* Semi-transparent version of header green */
+        }
+        #passwordPromptBox {
+            background-color: #FCFBF4; /* Creamy white like sections */
+            color: #433A3F;
+            border: 1px solid #588157; /* Muted green border */
+        }
+        #passwordInput {
+            border: 1px solid #A3B18A; /* Lighter muted green border */
+            color: #433A3F;
+        }
+        #passwordInput:focus {
+            border-color: #588157;
+            box-shadow: 0 0 0 0.2rem rgba(88, 129, 87, 0.25);
+            outline: none;
+        }
+        #passwordSubmitButton {
+            background-color: #588157; /* Muted Green Button */
+            border-color: #3A5A40;
+            color: white;
+            transition: background-color 0.2s ease-in-out;
+        }
+        #passwordSubmitButton:hover {
+            background-color: #3A5A40; /* Darker Muted Green */
+        }
+        #errorMessage {
+            color: #A94442; /* Muted red for errors */
+        }
+
+        /* Main Link Button Styling */
+        .main-link-button {
+            display: inline-block;
+            font-weight: 600; /* semibold */
+            padding-top: 0.75rem; /* py-3 */
+            padding-bottom: 0.75rem; /* py-3 */
+            padding-left: 1.5rem; /* px-6 */
+            padding-right: 1.5rem; /* px-6 */
+            border-radius: 0.375rem; /* rounded-md */
+            font-size: 1.125rem; /* text-lg */
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); /* shadow-md */
+            transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out, box-shadow 0.2s ease-in-out;
+            border: 1px solid transparent;
+            margin-bottom: 0.5rem; /* Add some space between buttons when they wrap */
+        }
+        .main-link-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); /* shadow-lg */
+        }
+
+        /* Content Section Styling */
+        .content-section {
+            background-color: #FCFBF4; /* Creamy white section bg */
+            border: 2px solid #588157; /* Muted green border */
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); /* shadow-xl */
+            padding: 2rem; /* p-8 */
+            margin-bottom: 2rem; /* mb-8 */
+        }
+        .content-section h2 {
+            font-family: 'IM Fell English SC', serif;
+            color: #3A5A40; /* Darker muted green for headings */
+            font-size: 1.875rem; /* text-3xl approximation */
+            font-weight: 600; /* semibold */
+            margin-bottom: 2rem; /* mb-8 */
+        }
+        .content-section p, .content-section ul {
+            color: #433A3F;
+            line-height: 1.625; /* leading-relaxed */
+        }
+        .content-section a {
+            color: #588157; /* Muted green for links */
+            text-decoration: underline;
+        }
+        .content-section a:hover {
+            color: #D97706; /* Amber-600 for link hover */
+        }
+        /* Removed .family-image-placeholder-header-dimensions as it's no longer needed */
+
+        /* Initially hide the main content */
+        #mainContent {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-beige-100 to-green-100 min-h-screen flex flex-col items-center pt-10 pb-10 px-4">
+
+    <div id="passwordPromptContainer" class="fixed inset-0 flex items-center justify-center z-50 p-4">
+        <div id="passwordPromptBox" class="p-8 rounded-lg shadow-xl text-center w-full max-w-sm">
+            <h2 class="text-xl font-semibold mb-6 irish-header-alt-font" style="color: #3A5A40;">Enter Password</h2>
+            <input type="password" id="passwordInput" placeholder="Password" class="p-2 rounded-md w-full mb-4">
+            <button id="passwordSubmitButton" class="font-semibold py-2 px-6 rounded-md">Submit</button>
+            <p id="errorMessage" class="hidden mt-3 text-sm">Incorrect password. Please try again.</p>
+        </div>
+    </div>
+
+    <div id="mainContent" class="container mx-auto max-w-3xl">
+        <header class="text-center mb-12 py-10 shadow-lg" style="background-color: #386641; border-radius: 0.5rem;">
+            <h1 class="text-4xl md:text-5xl font-bold irish-header-alt-font mb-4" style="color: #F2E8CF;">Welcome to Our Family's Shared History</h1>
+            <p class="text-lg" style="color: #D4C2AD; padding-left: 1rem; padding-right: 1rem;">
+                This website is a place to review and collaboratively build our family tree.
+                Your contributions and insights are invaluable.
+            </p>
+        </header>
+
+        <div class="flex flex-wrap justify-center gap-4 md:gap-6 mb-12 text-center">
+            <a href="familyTree.html" class="main-link-button text-white" style="background-color: #588157; border-color: #3A5A40;">
+                View Detailed Tree Data
+            </a>
+            <a href="familyTreeImage.html" class="main-link-button text-white" style="background-color: #A3B18A; border-color: #588157;">
+                View Simple Family Tree
+            </a>
+            <a href="photoAlbums.html" class="main-link-button text-white font-semibold" style="background-color: #D97706; /* Amber-600 */ border-color: #B45309; /* Amber-700 */">
+                View Family Photo Albums
+            </a>
+            <a href="/webCal/2025/fullyearlinked.html" class="main-link-button text-white font-semibold" style="background-color: #3E863D; border-color: #2A5D29;">
+                View Family Calendar
+            </a>
+        </div>
+        
+        <section class="content-section">
+            <h2 class="text-center">Your Feedback Helps to Keep Our Family Tree Updated</h2>
+            <p class="text-center">
+                Have an update, a correction, or just want to provide a suggestion? Let us know using the link below.
+            </p>
+            <div class="mt-6 text-center">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScKuGN7kDbxzCM5hGJy0YVnT3qFfD0Au0mN8CZERqD-_iFikQ/viewform?usp=dialog" target="_blank" rel="noopener noreferrer" class="font-semibold text-lg" style="color: #588157;">
+                    Provide Feedback
+                </a>
+            </div>
+        </section>
+        
+        <footer class="text-center mt-12 py-6 border-t" style="border-color: #A3B18A;">
+            <p class="font-semibold" style="color: #3A5A40;">&copy; <span id="currentYear"></span> Hart Family. All rights reserved.</p>
+            <p class="text-sm mt-1" style="color: #D97706;">Fáilte!</p>
+        </footer>
+
+    </div>
+
+   <script>
+        // --- Password Protection Script ---
+        const correctPassword = 'Hart2025'; // <--- CHANGE THIS PASSWORD if needed!
+
+        const passwordPromptContainer = document.getElementById('passwordPromptContainer');
+        const passwordInput = document.getElementById('passwordInput');
+        const passwordSubmitButton = document.getElementById('passwordSubmitButton');
+        const mainContent = document.getElementById('mainContent');
+        const errorMessage = document.getElementById('errorMessage');
+
+        // Function to initialize page elements like the current year in the footer
+        function initializePage() {
+            if(document.getElementById('currentYear')) {
+                document.getElementById('currentYear').textContent = new Date().getFullYear();
+            }
+        }
+
+        // Function to check the entered password
+        function checkPassword() {
+            const enteredPassword = passwordInput.value;
+            if (enteredPassword === correctPassword) {
+                // If password is correct, hide the prompt and show the main content
+                passwordPromptContainer.style.display = 'none'; 
+                mainContent.style.display = 'block';     
+                initializePage(); // Set year and other initial elements once content is visible
+            } else {
+                // If password is incorrect, show an error message
+                errorMessage.classList.remove('hidden'); 
+                passwordInput.value = ''; // Clear the password input
+                passwordInput.focus(); // Set focus back to the password input
+            }
+        }
+
+        // Event listener for the submit button click
+        passwordSubmitButton.addEventListener('click', checkPassword);
+        
+        // Event listener for pressing Enter in the password input field
+        passwordInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    </script>
+
+</body>
+</html>
