@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xml:lang="en" lang="en" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
 <head dir="ltr" lang="en">
-	<title>Hart Family Tree - New and updated objects</title>
+	<title>Hart Family Tree - Heatmaps</title>
 	<meta charset="UTF-8" />
 	<meta name ="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=0.5, maximum-scale=10.0, user-scalable=yes" />
 	<meta name ="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +33,8 @@
 				<ul class="nav" id="dropmenu">
 					<li><a href="individuals.html" title="Individuals">Individuals</a></li>
 					<li><a href="index.html" title="Surnames">Surnames</a></li>
-					<li><a href="heatmaps.html" title="Heatmaps">Heatmaps</a></li>
-					<li class = "CurrentSection"><a href="updates.html" title="Updates">Updates</a></li>
+					<li class = "CurrentSection"><a href="heatmaps.html" title="Heatmaps">Heatmaps</a></li>
+					<li><a href="updates.html" title="Updates">Updates</a></li>
 				</ul>
 			</div>
 		</div>
@@ -69,27 +69,34 @@ function GoToTop() {
 }
 </script>
 
-		<div class="content" id="Updates">
-			<p>
-			This page contains the last updated objects in the database in the last 1 days and for a maximum of 1 objects per object type.
+		<div class="content" id="Events">
+			<p id="description">
+			The next section contains an index of all the events for an Heatmap map.
 			</p>
-			<h4>
-			People
-			</h4>
-			<table class="list" id="list">
-				<tr>
-					<td class="date">
-					May 24, 2025 10:42:55 AM
-					</td>
-					<td>
-						<a href="ppl/a/c/f47fec6261d32a3e4ad1e9bc1ca.html">Rebholz, Ryan</a>
-					</td>
-				</tr>
-			</table>
-			<h4>
-			Notes
-			</h4>
-			<table class="list" id="list">
+			<div id="ltr">
+				<ul class="ltr">
+					<li><a href="#A" title="Alphabet Menu: A">A</a></li>
+				</ul>
+			</div>
+			<table class="infolist primobjlist eventlist ltr">
+				<thead>
+					<tr>
+						<th class="ColumnLetter">Letter</th>
+						<th class="ColumnName">Name</th>
+						<th class="ColumnDescription">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class = "BeginLetter">
+						<td class="ColumnLetter"><a id="A" name="event_A" title="Places beginning with letter A">A</a></td>
+						<td class="ColumnName">
+							<a href="heat/s/t/AllEvents.html" title="All Events">
+							All Events
+							</a>
+						</td>
+						<td class="ColumnDescription">Heatmap for All Events within the selected filter</td>
+					</tr>
+				</tbody>
 			</table>
 		</div>
 		<div class="fullclear"></div>
