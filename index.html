@@ -59,6 +59,7 @@
             transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out, box-shadow 0.2s ease-in-out;
             border: 1px solid transparent;
             margin-bottom: 0.5rem; /* Add some space between buttons when they wrap */
+            text-decoration: none; /* Ensure links styled as buttons don't have underlines */
         }
         .main-link-button:hover {
             transform: translateY(-2px);
@@ -85,11 +86,19 @@
             color: #433A3F;
             line-height: 1.625; /* leading-relaxed */
         }
-        .content-section a {
+        .content-section ul {
+            list-style-type: disc; /* Default disc bullets for unordered lists */
+            padding-left: 1.5rem; /* Indent list items */
+            margin-top: 1rem; /* Space above the list */
+        }
+        .content-section li {
+            margin-bottom: 0.5rem; /* Space between list items */
+        }
+        .content-section a:not(.main-link-button) { /* Apply only to text links within content, not buttons */
             color: #588157; /* Muted green for links */
             text-decoration: underline;
         }
-        .content-section a:hover {
+        .content-section a:not(.main-link-button):hover {
             color: #D97706; /* Amber-600 for link hover */
         }
         /* Removed .family-image-placeholder-header-dimensions as it's no longer needed */
@@ -137,17 +146,29 @@
                 Family Tree Statistics
             </a>
         </div>
+
+        <section class="content-section">
+            <h2 class="text-center">Recent Updates</h2>
+            <p class="text-center">Stay up-to-date with the latest additions and changes to our family history project!</p>
+            <ul>
+                <li><strong>May 20, 2025:</strong> Added new photos to the "O'Malley Family Reunion 2003" album.</li>
+                <li><strong>May 15, 2025:</strong> Updated birthdate for Great Aunt Mildred.</li>
+                <li><strong>May 10, 2025:</strong> New "Family Tree Statistics" page launched!</li>
+                <li><strong>May 1, 2025:</strong> Began collecting information for the Murphy branch of the family.</li>
+            </ul>
+            <p class="mt-6 text-center">Have an update to share? <a href="https://docs.google.com/forms/d/e/1FAIpQLScKuGN7kDbxzCM5hGJy0YVnT3qFfD0Au0mN8CZERqD-_iFikQ/viewform?usp=dialog" target="_blank" rel="noopener noreferrer">Let us know!</a></p>
+        </section>
         
         <section class="content-section">
             <h2 class="text-center">Your Feedback Helps to Keep Our Family Tree Updated</h2>
             <p class="text-center">
-                Have an update, a correction, or just want to provide a suggestion? Let us know using the link below.
+                Have a correction, or just want to provide a suggestion? Let us know using the link below.
             </p>
-        <div class="mt-6 text-center">
+           <div class="mt-6 text-center">
     <a href="https://docs.google.com/forms/d/e/1FAIpQLScKuGN7kDbxzCM5hGJy0YVnT3qFfD0Au0mN8CZERqD-_iFikQ/viewform?usp=dialog"
        target="_blank" rel="noopener noreferrer"
        class="main-link-button text-white" 
-       style="background-color: #808080; border-color: #2A5D29;">
+       style="background-color: #3E863D; border-color: #2A5D29;">
        Provide Feedback or Updates
     </a>
 </div>
@@ -183,7 +204,7 @@
             if (enteredPassword === correctPassword) {
                 // If password is correct, hide the prompt and show the main content
                 passwordPromptContainer.style.display = 'none'; 
-                mainContent.style.display = 'block';     
+                mainContent.style.display = 'block';    
                 initializePage(); // Set year and other initial elements once content is visible
             } else {
                 // If password is incorrect, show an error message
@@ -202,6 +223,10 @@
                 checkPassword();
             }
         });
+
+        // Initialize page elements if password is not a concern for initial load (e.g. if you remove password)
+        // or if you want to show the password prompt immediately.
+        // If password prompt is the first thing, initializePage() is called after successful password entry.
     </script>
 
 </body>
