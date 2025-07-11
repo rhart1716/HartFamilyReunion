@@ -112,17 +112,16 @@
         }
         .feedback-prompt-section h2 {
             color: #D97706; /* Amber for the heading to match the border */
-            margin-bottom: 0; /* Remove bottom margin to make it thinner */
+            margin-bottom: 0.5rem; /* Add a small margin below title */
             font-size: 1.5rem; /* Slightly smaller for banner effect */
-            text-align: left; /* Align title to the left */
-            flex-shrink: 0; /* Prevent title from shrinking */
-            width: 30%; /* Allocate width for the title */
+            text-align: center; /* Center title */
+            width: auto; /* Remove fixed width */
         }
         .feedback-prompt-section p {
             font-size: 1rem; /* Slightly smaller text for banner effect */
             margin-bottom: 0; /* Remove bottom margin to make it thinner */
-            text-align: left; /* Align text to the left */
-            width: 70%; /* Allocate width for the text */
+            text-align: center; /* Center text */
+            width: auto; /* Remove fixed width */
         }
 
         /* Initially hide the main content */
@@ -171,12 +170,11 @@
 
         <!-- NEW: Section to urge feedback -->
         <section class="content-section feedback-prompt-section">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-                <h2 class="irish-header-alt-font">Your Family Tree Needs YOU!</h2>
+            <div class="flex flex-col items-center justify-center gap-2">
+                <h2 class="irish-header-alt-font">Family Tree Review Needed!</h2>
                 <p class="text-lg">
-                    Please take a moment to review your family's information.
-                    If you find any errors, missing details, or have new stories to add,
-                    your input is crucial! Use the "Provide Feedback or Updates" link below.
+                    Please review your family's information for accuracy. Your feedback is crucial to keep our tree updated.
+                    Use the "Provide Feedback or Updates" link below.
                 </p>
             </div>
         </section>
@@ -205,6 +203,17 @@
         Provide Feedback or Updates
     </a>
 </div>
+        </section>
+
+        <!-- New Section for Questions -->
+        <section class="content-section text-center">
+            <h2 class="text-center">General Questions?</h2>
+            <p class="text-lg">
+                For general questions about the website or family history project (not for family tree updates - please use the feedback form above for these),
+                please feel free to reach out to us at:
+                <br>
+                <a href="mailto:ryanehart@gmail.com" class="text-green-700 hover:text-amber-600 font-semibold">ryanehart@gmail.com</a>
+            </p>
         </section>
         
         <footer class="text-center mt-12 py-6 border-t" style="border-color: #A3B18A;">
