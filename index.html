@@ -63,7 +63,7 @@
         }
         .main-link-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); /* shadow-lg */
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 44px 6px -2px rgba(0,0,0,0.05); /* shadow-lg */
         }
 
         /* Content Section Styling */
@@ -102,6 +102,28 @@
             color: #D97706; /* Amber-600 for link hover */
         }
         /* Removed .family-image-placeholder-header-dimensions as it's no longer needed */
+
+        /* Specific styling for the new feedback prompt section */
+        .feedback-prompt-section {
+            background-color: #FFF8E1; /* A very light, warm cream to stand out */
+            border-color: #D97706; /* Amber border to match the feedback button color */
+            box-shadow: 0 15px 20px -5px rgba(0,0,0,0.1), 0 6px 6px -3px rgba(0,0,0,0.08); /* Slightly stronger shadow */
+            padding: 0.75rem 2rem; /* py-3 px-8 - Thinner from top to bottom */
+        }
+        .feedback-prompt-section h2 {
+            color: #D97706; /* Amber for the heading to match the border */
+            margin-bottom: 0; /* Remove bottom margin to make it thinner */
+            font-size: 1.5rem; /* Slightly smaller for banner effect */
+            text-align: left; /* Align title to the left */
+            flex-shrink: 0; /* Prevent title from shrinking */
+            width: 30%; /* Allocate width for the title */
+        }
+        .feedback-prompt-section p {
+            font-size: 1rem; /* Slightly smaller text for banner effect */
+            margin-bottom: 0; /* Remove bottom margin to make it thinner */
+            text-align: left; /* Align text to the left */
+            width: 70%; /* Allocate width for the text */
+        }
 
         /* Initially hide the main content */
         #mainContent {
@@ -142,11 +164,23 @@
             <a href="familyCalendar/2025/fullyearlinked.html" class="main-link-button text-white font-semibold" style="background-color: #3E863D; border-color: #2A5D29;">
                 Family Calendar
             </a>
-             <a href="familyStats.html" class="main-link-button text-white font-semibold" style="background-color: #009B77; border-color: #588157;">
+            <a href="familyStats.html" class="main-link-button text-white font-semibold" style="background-color: #009B77; border-color: #588157;">
                 Family Tree Statistics
             </a>
         </div>
 
+        <!-- NEW: Section to urge feedback -->
+        <section class="content-section feedback-prompt-section">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <h2 class="irish-header-alt-font">Your Family Tree Needs YOU!</h2>
+                <p class="text-lg">
+                    Please take a moment to review your family's information.
+                    If you find any errors, missing details, or have new stories to add,
+                    your input is crucial! Use the "Provide Feedback or Updates" link below.
+                </p>
+            </div>
+        </section>
+        
         <section class="content-section">
             <h2 class="text-center">Recent Updates</h2>
             <p class="text-center">Stay up-to-date with the latest additions and changes to our family history project!</p>
@@ -165,10 +199,10 @@
             </p>
            <div class="mt-6 text-center">
     <a href="https://docs.google.com/forms/d/e/1FAIpQLScKuGN7kDbxzCM5hGJy0YVnT3qFfD0Au0mN8CZERqD-_iFikQ/viewform?usp=dialog"
-       target="_blank" rel="noopener noreferrer"
-       class="main-link-button text-white" 
-       style="background-color: #3E863D; border-color: #2A5D29;">
-       Provide Feedback or Updates
+        target="_blank" rel="noopener noreferrer"
+        class="main-link-button text-white" 
+        style="background-color: #3E863D; border-color: #2A5D29;">
+        Provide Feedback or Updates
     </a>
 </div>
         </section>
@@ -203,7 +237,7 @@
             if (enteredPassword === correctPassword) {
                 // If password is correct, hide the prompt and show the main content
                 passwordPromptContainer.style.display = 'none'; 
-                mainContent.style.display = 'block';    
+                mainContent.style.display = 'block';   
                 initializePage(); // Set year and other initial elements once content is visible
             } else {
                 // If password is incorrect, show an error message
