@@ -23,36 +23,7 @@
         .irish-header-alt-font {
             font-family: 'IM Fell English SC', serif;
         }
-        /* Password Prompt Styling */
-        #passwordPromptContainer {
-            background-color: rgba(56, 102, 65, 0.85); /* Semi-transparent version of header green */
-        }
-        #passwordPromptBox {
-            background-color: #FCFBF4; /* Creamy white like sections */
-            color: #433A3F;
-            border: 1px solid #588157; /* Muted green border */
-        }
-        #passwordInput {
-            border: 1px solid #A3B18A; /* Lighter muted green border */
-            color: #433A3F;
-        }
-        #passwordInput:focus {
-            border-color: #588157;
-            box-shadow: 0 0 0 0.2rem rgba(88, 129, 87, 0.25);
-            outline: none;
-        }
-        #passwordSubmitButton {
-            background-color: #588157; /* Muted Green Button */
-            border-color: #3A5A40;
-            color: white;
-            transition: background-color 0.2s ease-in-out;
-        }
-        #passwordSubmitButton:hover {
-            background-color: #3A5A40; /* Darker Muted Green */
-        }
-        #errorMessage {
-            color: #A94442; /* Muted red for errors */
-        }
+        /* Password Prompt Styling - REMOVED */
 
         /* Main Link Button Styling */
         .main-link-button {
@@ -133,22 +104,15 @@
             width: auto; /* Remove fixed width */
         }
 
-        /* Initially hide the main content */
+        /* Main content is now visible by default */
         #mainContent {
-            display: none;
+            display: block; /* Changed from 'none' to 'block' */
         }
     </style>
 </head>
 <body class="bg-gradient-to-br from-beige-100 to-green-100 min-h-screen flex flex-col items-center pt-10 pb-10 px-4">
 
-    <div id="passwordPromptContainer" class="fixed inset-0 flex items-center justify-center z-50 p-4">
-        <div id="passwordPromptBox" class="p-8 rounded-lg shadow-xl text-center w-full max-w-sm">
-            <h2 class="text-xl font-semibold mb-6 irish-header-alt-font" style="color: #3A5A40;">Enter Password</h2>
-            <input type="password" id="passwordInput" placeholder="Password" class="p-2 rounded-md w-full mb-4">
-            <button id="passwordSubmitButton" class="font-semibold py-2 px-6 rounded-md">Submit</button>
-            <p id="errorMessage" class="hidden mt-3 text-sm">Incorrect password. Please try again.</p>
-        </div>
-    </div>
+    <!-- Password Prompt Container - REMOVED -->
 
     <div id="mainContent" class="container mx-auto max-w-3xl">
         <header class="text-center mb-12 py-10 shadow-lg" style="background-color: #386641; border-radius: 0.5rem;">
@@ -232,6 +196,17 @@
 
     </div>
 
-   
+   <script>
+        // Function to initialize page elements like the current year in the footer
+        function initializePage() {
+            if(document.getElementById('currentYear')) {
+                document.getElementById('currentYear').textContent = new Date().getFullYear();
+            }
+        }
+
+        // Initialize page elements directly on load since password protection is removed
+        initializePage();
+    </script>
+
 </body>
 </html>
