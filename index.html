@@ -232,53 +232,6 @@
 
     </div>
 
-   <script>
-        // --- Password Protection Script ---
-        const correctPassword = 'Hart2025'; // <--- CHANGE THIS PASSWORD if needed!
-
-        const passwordPromptContainer = document.getElementById('passwordPromptContainer');
-        const passwordInput = document.getElementById('passwordInput');
-        const passwordSubmitButton = document.getElementById('passwordSubmitButton');
-        const mainContent = document.getElementById('mainContent');
-        const errorMessage = document.getElementById('errorMessage');
-
-        // Function to initialize page elements like the current year in the footer
-        function initializePage() {
-            if(document.getElementById('currentYear')) {
-                document.getElementById('currentYear').textContent = new Date().getFullYear();
-            }
-        }
-
-        // Function to check the entered password
-        function checkPassword() {
-            const enteredPassword = passwordInput.value;
-            if (enteredPassword === correctPassword) {
-                // If password is correct, hide the prompt and show the main content
-                passwordPromptContainer.style.display = 'none'; 
-                mainContent.style.display = 'block';   
-                initializePage(); // Set year and other initial elements once content is visible
-            } else {
-                // If password is incorrect, show an error message
-                errorMessage.classList.remove('hidden'); 
-                passwordInput.value = ''; // Clear the password input
-                passwordInput.focus(); // Set focus back to the password input
-            }
-        }
-
-        // Event listener for the submit button click
-        passwordSubmitButton.addEventListener('click', checkPassword);
-        
-        // Event listener for pressing Enter in the password input field
-        passwordInput.addEventListener('keypress', function(event) {
-            if (event.key === 'Enter') {
-                checkPassword();
-            }
-        });
-
-        // Initialize page elements if password is not a concern for initial load (e.g. if you remove password)
-        // or if you want to show the password prompt immediately.
-        // If password prompt is the first thing, initializePage() is called after successful password entry.
-    </script>
-
+   
 </body>
 </html>
