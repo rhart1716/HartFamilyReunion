@@ -2,8 +2,8 @@
 1 SOUR Gramps
 2 VERS AIO64-6.0.1--1
 2 NAME Gramps
-1 DATE 4 AUG 2025
-2 TIME 15:12:01
+1 DATE 16 AUG 2025
+2 TIME 10:02:17
 1 SUBM @SUBM@
 1 FILE C:\Users\ryane\OneDrive\Documents\GitHub\HartFamilyReunion\reports\Family Tree Viewer File.ged
 1 COPR Copyright (c) 2025 .
@@ -2053,12 +2053,14 @@
 1 SEX F
 1 BIRT
 2 DATE 25 MAY 1947
+1 DEAT
+2 DATE 11 AUG 2025
 1 FAMC @F0038@
 2 PEDI birth
 1 FAMS @F0056@
 1 CHAN
-2 DATE 22 JUL 2025
-3 TIME 14:40:12
+2 DATE 16 AUG 2025
+3 TIME 10:01:12
 0 @I0154@ INDI
 1 NAME Kevin /Nally/
 2 TYPE birth
