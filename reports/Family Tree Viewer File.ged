@@ -2,11 +2,11 @@
 1 SOUR Gramps
 2 VERS AIO64-6.0.1--1
 2 NAME Gramps
-1 DATE 17 OCT 2025
-2 TIME 08:10:39
+1 DATE 28 FEB 2026
+2 TIME 09:28:51
 1 SUBM @SUBM@
 1 FILE C:\Users\ryane\OneDrive\Documents\GitHub\HartFamilyReunion\reports\Family Tree Viewer File.ged
-1 COPR Copyright (c) 2025 .
+1 COPR Copyright (c) 2026 .
 1 GEDC
 2 VERS 5.5.1
 2 FORM LINEAGE-LINKED
@@ -1624,12 +1624,15 @@
 1 SEX F
 1 BIRT
 2 DATE 13 JUL 1952
+1 DEAT
+2 TYPE Lung Cancer
+2 DATE 11 FEB 26
 1 FAMC @F0028@
 2 PEDI birth
 1 FAMS @F0064@
 1 CHAN
-2 DATE 22 JUL 2025
-3 TIME 14:39:28
+2 DATE 28 FEB 2026
+3 TIME 08:35:21
 0 @I0122@ INDI
 1 NAME Julie Ann /Hart/
 2 TYPE birth
