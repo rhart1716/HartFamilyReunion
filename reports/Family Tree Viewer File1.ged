@@ -3,7 +3,7 @@
 2 VERS AIO64-6.0.1--1
 2 NAME Gramps
 1 DATE 29 MAR 2026
-2 TIME 10:29:11
+2 TIME 10:41:33
 1 SUBM @SUBM@
 1 FILE C:\Users\ryane\OneDrive\Documents\GitHub\HartFamilyReunion\reports\Family Tree Viewer File1.ged
 1 COPR Copyright (c) 2026 .
@@ -2465,17 +2465,12 @@
 2 GIVN Allison
 2 SURN Neary
 1 SEX F
-1 BIRT
-2 DATE 20 JAN 1997
-1 EVEN
-2 TYPE Marriage
-2 DATE 19 DEC 2025
 1 FAMC @F0049@
 2 PEDI birth
 1 FAMS @F0093@
 1 CHAN
 2 DATE 29 MAR 2026
-3 TIME 10:23:41
+3 TIME 10:40:20
 0 @I0186@ INDI
 1 NAME Brian /Neary/
 2 TYPE birth
@@ -4984,9 +4979,11 @@
 0 @F0093@ FAM
 1 HUSB @I0309@
 1 WIFE @I0185@
+1 MARR
+2 DATE 19 DEC 2025
 1 CHAN
 2 DATE 29 MAR 2026
-3 TIME 10:24:17
+3 TIME 10:40:30
 0 @N0000@ NOTE Make updates from 2024 calendar
 0 @N0001@ NOTE 
 0 @O0000@ OBJE
