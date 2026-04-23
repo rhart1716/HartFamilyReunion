@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2G90LQ5B2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-H2G90LQ5B2');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Reunion Pictures | Heritage Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: #334155;
+            background-color: #F8FAF9;
+        }
+        .serif-font {
+            font-family: 'Playfair Display', serif;
+        }
+        .heritage-header {
+            background: linear-gradient(135deg, #064E3B 0%, #022C22 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .header-bg-animate {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+            opacity: 0.15;
+            animation: grainShift 20s linear infinite;
+        }
+        @keyframes grainShift {
+            0% { background-position: 0 0; }
+            100% { background-position: 500px 500px; }
+        }
+        .slope-edge {
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+        .year-card {
+            background: #ffffff;
+            border: 1px solid #E2E8F0;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .year-card:hover {
+            border-color: #059669;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="heritage-header slope-edge pt-16 pb-24 text-white text-center">
+        <div class="header-bg-animate"></div>
+        <div class="relative z-10 container mx-auto px-6">
+            <h1 class="serif-font text-4xl md:text-6xl font-bold mb-4">Family Reunion Pictures</h1>
+            <p class="text-emerald-100 text-lg md:text-xl font-light tracking-wide italic">Cherishing our family moments, year after year.</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 -mt-8 relative z-20 pb-20">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <a href="https://photos.app.goo.gl/yTzroBpt2c9ya3Mu5" target="_blank" class="year-card p-8 rounded-xl text-center border-t-4 border-t-emerald-700">
+                <span class="serif-font text-3xl font-bold text-emerald-900">2025</span>
+                <p class="mt-2 text-slate-500 font-semibold uppercase tracking-widest text-sm text-nowrap">Hart Reunion</p>
+            </a>
+
+            <a href="https://photos.app.goo.gl/acjHFBrzDnLjCdb48" target="_blank" class="year-card p-8 rounded-xl text-center border-t-4 border-t-orange-700">
+                <span class="serif-font text-3xl font-bold text-orange-900">2023</span>
+                <p class="mt-2 text-slate-500 font-semibold uppercase tracking-widest text-sm text-nowrap">Hart Reunion</p>
+            </a>
+
+            <a href="https://photos.app.goo.gl/oVwMDqHVNzncBuA29" target="_blank" class="year-card p-8 rounded-xl text-center border-t-4 border-t-amber-600">
+                <span class="serif-font text-3xl font-bold text-amber-900">2021</span>
+                <p class="mt-2 text-slate-500 font-semibold uppercase tracking-widest text-sm text-nowrap">Hart Reunion</p>
+            </a>
+
+            <a href="https://photos.app.goo.gl/qjGEYFXUys3frFiK9" target="_blank" class="year-card p-8 rounded-xl text-center border-t-4 border-t-slate-600">
+                <span class="serif-font text-3xl font-bold text-slate-900">2020</span>
+                <p class="mt-2 text-slate-500 font-semibold uppercase tracking-widest text-sm text-nowrap">Hart Reunion</p>
+            </a>
+
+        </div>
+
+        <div class="mt-12 text-center bg-white/50 p-6 rounded-lg border border-emerald-100 max-w-2xl mx-auto shadow-sm">
+            <p class="text-slate-600 italic">
+                Click on a year to view the photo album. Feel free to add your own photos once you've opened the album!
+            </p>
+        </div>
+    </main>
+
+    <footer class="text-center py-12 border-t border-emerald-100 bg-white">
+        <p class="serif-font font-bold text-emerald-900">&copy; <span id="year"></span> Hart Family Archive</p>
+        <p class="text-sm mt-1 text-emerald-700 italic font-medium">Fáilte!</p>
+    </footer>
+
+    <script>
+        // Set the current year in footer automatically
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+services:
+  grampsweb:
+    image: ghcr.io/gramps-project/grampsweb:latest
+    restart: always
+    ports:
+      - "80:80"
+    environment:
+      - GRAMPSWEB_TREE=Hart Family Tree
+      - GRAMPSWEB_SECRET_KEY=your-secret-key-here
+      - GRAMPSWEB_CORS_ORIGIN=https://pewu.github.io
+      - GRAMPSWEB_PUBLIC_ACCESS=true
+    volumes:
+      - ./data/users:/app/users
+      - ./data/index:/app/indexdir
+      - ./data/thumb:/app/thumbnail_cache
+      - ./data/secret:/app/secret
+      - ./data/db:/root/.gramps/grampsdb
+      - ./data/media:/app/media

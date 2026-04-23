@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H2G90LQ5B2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-H2G90LQ5B2');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Stats Viewer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;700&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'EB Garamond', serif;
+            color: #433A3F; /* Dark, slightly muted brown/purple for text */
+        }
+        .irish-header-alt-font {
+            font-family: 'IM Fell English SC', serif;
+        }
+
+        /* JPEG Selection Button Styling */
+        .jpeg-select-button {
+            display: inline-block;
+            font-weight: 600; /* semibold */
+            padding-top: 0.75rem; /* py-3 */
+            padding-bottom: 0.75rem; /* py-3 */
+            padding-left: 1.5rem; /* px-6 */
+            padding-right: 1.5rem; /* px-6 */
+            border-radius: 0.375rem; /* rounded-md */
+            font-size: 1.125rem; /* text-lg */
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); /* shadow-md */
+            transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
+            border: 1px solid transparent;
+            margin: 0.5rem; 
+            cursor: pointer;
+            background-color: #588157; /* Muted Green Button */
+            border-color: #3A5A40;
+            color: white;
+        }
+        .jpeg-select-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); /* shadow-lg */
+            background-color: #3A5A40; /* Darker Muted Green */
+        }
+        .jpeg-select-button.active { /* Style for the currently active/selected button */
+            background-color: #D97706; /* Amber-600 */
+            border-color: #B45309; /* Amber-700 */
+            color: white;
+            box-shadow: 0 0 0 3px rgba(252, 251, 244, 0.5); /* Creamy outline */
+        }
+
+        /* Content Section Styling - for the main viewer area */
+        .content-section {
+            background-color: #FCFBF4; /* Creamy white section bg */
+            border: 2px solid #588157; /* Muted green border */
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); /* shadow-xl */
+            padding: 1.5rem; 
+            margin-bottom: 2rem; 
+            margin-top: 1rem; 
+        }
+        .content-section h2 { 
+            font-family: 'IM Fell English SC', serif;
+            color: #3A5A40; 
+            font-size: 1.875rem; 
+            font-weight: 600; 
+            margin-bottom: 1.5rem; 
+            text-align: center;
+        }
+        
+        /* Image viewer styling */
+        .image-viewer-container {
+            width: 100%;
+            min-height: 300px; /* Minimum height for the container */
+            max-height: 75vh; /* Max height based on viewport */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; 
+            border-radius: 0.5rem; 
+            border: 1px solid #A3B18A; /* Subtle border for the image area itself */
+            background-color: #F0F0E0; /* Light beige background for the container */
+        }
+        .image-viewer-image {
+            max-width: 100%;
+            max-height: 100%; /* Make image fill available space within max-height of container */
+            object-fit: contain; /* Scales image down to fit, preserving aspect ratio */
+            display: block; /* Remove extra space below image */
+            border-radius: 0.25rem; /* Slight rounding if image is smaller than container */
+        }
+        .image-viewer-placeholder {
+            display: flex; /* Used by JS to show/hide */
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%; /* Fill the container */
+            min-height: 300px; /* Match container's min-height */
+            color: #433A3F;
+            font-size: 1.25rem;
+            text-align: center;
+        }
+
+        .themed-header-link {
+            color: #F2E8CF; 
+            text-decoration: underline;
+            font-weight: 500;
+        }
+        .themed-header-link:hover {
+            color: #FFF; 
+        }
+
+    </style>
+</head>
+<body class="bg-gradient-to-br from-beige-100 to-green-100 min-h-screen flex flex-col items-center pt-10 pb-10 px-4">
+
+    <div class="container mx-auto max-w-5xl w-full">
+        <header class="text-center mb-6 py-8 shadow-lg" style="background-color: #386641; border-radius: 0.5rem;">
+            <h1 class="text-3xl md:text-4xl font-bold irish-header-alt-font mb-3" style="color: #F2E8CF;">Family Stats Viewer</h1>
+            <p class="text-md" style="color: #D4C2AD; padding-left: 1rem; padding-right: 1rem;">
+                Select an report from the buttons below to view.
+            </p>
+            
+        </header>
+        
+        <main class="w-full">
+            <div id="jpegButtonContainer" class="flex flex-wrap justify-center items-center gap-2 md:gap-4 mb-6 px-2">
+                <button class="jpeg-select-button" data-jpeg-src="reports/surNames.jpg" data-jpeg-title="Total Family by Last Name">
+                    Surname
+                </button>
+                <button class="jpeg-select-button" data-jpeg-src="reports/numberOfChildren.jpg" data-jpeg-title="Number of Children per Family">
+                    Number of Children
+                </button>
+                <button class="jpeg-select-button" data-jpeg-src="reports/gender.jpg" data-jpeg-title="Family by Gender">
+                    Gender
+                </button>
+                <button class="jpeg-select-button" data-jpeg-src="reports/birthMonth.jpg" data-jpeg-title="Family by Birth Month">
+                    Birth Month
+                </button>
+                <button class="jpeg-select-button" data-jpeg-src="reports/ageFirstChild.jpg" data-jpeg-title="Age When Mother Had First Child">
+                    Age When First Child Was Born
+                </button>  
+                <button class="jpeg-select-button" data-jpeg-src="reports/ageLastChild.jpg" data-jpeg-title="Age When Mother Had Last Child">
+                    Age When Last Child Was Born
+                </button>  
+             
+                </div>
+
+            <section class="content-section">
+                <h2 id="jpegViewerTitle" class="irish-header-alt-font">Here's a Look at Our Family by the Report Selected:</h2>
+                <div class="image-viewer-container">
+                    <img id="jpegViewerImage" src="#" alt="Selected family image" class="image-viewer-image" style="display: none;">
+                    <div id="jpegViewerPlaceholderText" class="image-viewer-placeholder">
+                        <p>Select an report from the buttons above to view it here.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="text-center mt-12 py-6 border-t" style="border-color: #A3B18A;">
+            <p class="font-semibold" style="color: #3A5A40;">&copy; <span id="currentYear"></span> Hart Family. All rights reserved.</p>
+            <p class="text-sm mt-1" style="color: #D97706;">Fáilte!</p>
+        </footer>
+    </div>
+
+   <script>
+        // Set current year in footer
+        if(document.getElementById('currentYear')) {
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        }
+
+        const jpegButtons = document.querySelectorAll('.jpeg-select-button');
+        const jpegViewerImage = document.getElementById('jpegViewerImage');
+        const jpegViewerTitle = document.getElementById('jpegViewerTitle');
+        const jpegPlaceholder = document.getElementById('jpegViewerPlaceholderText');
+
+        function clearActiveButton() {
+            jpegButtons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+        }
+
+        jpegButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const jpegSrc = this.getAttribute('data-jpeg-src');
+                const jpegTitle = this.getAttribute('data-jpeg-title') || "Image Viewer";
+                
+                clearActiveButton();
+                this.classList.add('active');
+
+                if (jpegSrc) {
+                    jpegViewerImage.src = jpegSrc;
+                    jpegViewerImage.alt = jpegTitle; // Update alt text as well
+                    jpegViewerImage.style.display = 'block'; // Show image
+                    jpegPlaceholder.style.display = 'none'; // Hide placeholder
+                    jpegViewerTitle.textContent = jpegTitle;
+                } else {
+                    jpegViewerImage.src = '#'; // Clear src or set to a transparent pixel
+                    jpegViewerImage.alt = 'No image selected';
+                    jpegViewerImage.style.display = 'none'; // Hide image
+                    jpegPlaceholder.style.display = 'flex'; // Show placeholder
+                    jpegViewerTitle.textContent = "Select an Image";
+                }
+            });
+        });
+
+    </script>
+
+</body>
+</html>

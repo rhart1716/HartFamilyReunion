@@ -1,0 +1,13 @@
+tunnel: acbee6f2-ef7a-429b-975f-7ad64426d99b
+credentials-file: /home/rhart1716/.cloudflared/acbee6f2-ef7a-429b-975f-7ad64426d99b.json
+
+ingress:
+  # This points the main domain to your landing page (we'll set this up next)
+  - hostname: hartfamilytree.org
+    service: http://localhost:8080
+  
+  # This points a subdomain specifically to your Gramps Web
+  - hostname: tree.hartfamilytree.org
+    service: http://localhost:5055
+    
+  - service: http_status:404

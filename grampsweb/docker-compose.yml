@@ -1,0 +1,41 @@
+version: "3.7"
+
+services:
+  grampsweb:
+    image: ghcr.io/gramps-project/grampsweb:latest
+    restart: always
+    ports:
+      - "5055:5000"
+    environment:
+      - GRAMPSWEB_TREE=FamilyTree
+      - GRAMPSWEB_SECRET_KEY=p1-f4mily-tr33-h4rt
+      - GRAMPSWEB_ENABLE_PUBLIC_ACCESS=true
+      - GRAMPSWEB_ENABLE_PUBLIC_SEARCH=true
+      - GRAMPSWEB_PUBLIC_ACCESS_LIVING=true
+      - GRAMPSWEB_AUTH_ALLOW_ANONYMOUS=true
+      - GRAMPSWEB_DISABLED_MODULES=blog,dna
+      - GRAMPSWEB_DEFAULT_INDEX=search
+      - GRAMPSWEB_CORS_ORIGIN=https://hartfamilytree.org
+      - GRAMPSWEB_BASE_URL=https://tree.hartfamilytree.org
+      - GRAMPSWEB_EMAIL_HOST=smtp.gmail.com
+      - GRAMPSWEB_EMAIL_PORT=587
+      - GRAMPSWEB_EMAIL_USE_STARTTLS=true
+      - GRAMPSWEB_EMAIL_HOST_USER=ryanehart@gmail.com
+      - GRAMPSWEB_EMAIL_HOST_PASSWORD=tbcpxrfkujrgijvi
+      - GRAMPSWEB_DEFAULT_FROM_EMAIL=ryanehart@gmail.com
+    volumes:
+      - ./data/users:/app/users
+      - ./data/index:/app/indexdir
+      - ./data/thumb:/app/thumbnail_cache
+      - ./data/cache:/app/cache
+      - ./data/secret:/app/secret
+      - ./data/media:/app/media
+      - ./data/db:/root/.gramps/grampsdb
+
+  web-landing:
+    image: nginx:alpine
+    restart: always
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/usr/share/nginx/html:ro

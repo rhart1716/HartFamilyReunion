@@ -1,0 +1,26 @@
+services:
+  grampsweb:
+    image: ghcr.io/gramps-project/grampsweb:latest
+    restart: always
+    ports:
+      - "5055:5000"
+    environment:
+      - GRAMPSWEB_TREE=FamilyTree
+      - GRAMPSWEB_SECRET_KEY=p1-f4mily-tr33-h4rt
+      - GRAMPSWEB_PUBLIC_ACCESS=True
+      - GRAMPSWEB_DISABLED_MODULES=blog,dna
+    volumes:
+      - ./data/index:/app/indexdir
+      - ./data/thumb:/app/thumbnail_cache
+      - ./data/cache:/app/cache
+      - ./data/secret:/app/secret
+      - ./data/media:/app/media
+      - ./data/db:/root/.gramps/grampsdb
+
+  web-landing:
+    image: nginx:alpine
+    restart: always
+    ports:
+      - "8080:80"
+    volumes:
+      - ./landing-page:/usr/share/nginx/html:ro
