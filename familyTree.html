@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2G90LQ5B2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-H2G90LQ5B2');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Tree | Hart Family Archives</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: #334155;
+            background-color: #F8FAF9;
+        }
+        .serif-font {
+            font-family: 'Playfair Display', serif;
+        }
+        .heritage-header {
+            background: linear-gradient(135deg, #064E3B 0%, #022C22 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .header-bg-animate {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+            opacity: 0.15;
+            animation: grainShift 20s linear infinite;
+        }
+        @keyframes grainShift {
+            0% { background-position: 0 0; }
+            100% { background-position: 500px 500px; }
+        }
+        .slope-edge-bottom {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        .pdf-container {
+            background: #ffffff;
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-radius: 1.5rem;
+            overflow: hidden;
+        }
+        .back-link {
+            transition: all 0.2s ease;
+        }
+        .back-link:hover {
+            transform: translateX(-4px);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Compact Heritage Header -->
+    <header class="heritage-header w-full pt-12 pb-24 px-4 text-center slope-edge-bottom shadow-xl">
+        <div class="header-bg-animate"></div>
+        <div class="relative z-10 container mx-auto max-w-4xl">
+            <a href="index.html" class="back-link inline-flex items-center gap-2 text-emerald-300/80 hover:text-emerald-300 text-[10px] font-bold uppercase tracking-widest mb-6">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                Return to Archives
+            </a>
+            <h1 class="text-4xl md:text-5xl serif-font font-bold text-slate-50 italic">Lineage Charts</h1>
+            <p class="text-emerald-100/60 font-light mt-2 max-w-xl mx-auto text-sm md:text-base">
+                An archival generation report tracing the branches of the Hart family tree.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto max-w-5xl px-4 -mt-12 relative z-20 flex-grow mb-12">
+        <div class="pdf-container">
+            <!-- PDF Viewer with Fallback -->
+            <div class="w-full h-[75vh] md:h-[80vh] relative bg-slate-100">
+                <iframe 
+                    src="reports/Hart Backup_FamilyTree_Generation.pdf" 
+                    class="w-full h-full border-none"
+                    title="Hart Family Tree Document">
+                    <div class="flex flex-col items-center justify-center h-full p-12 text-center">
+                        <svg class="w-16 h-16 text-slate-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        <p class="text-slate-600 mb-6 font-medium">Your browser does not support integrated PDF viewing.</p>
+                        <a href="reports/Hart Backup_FamilyTree_Generation.pdf" target="_blank" class="bg-emerald-800 text-white px-6 py-3 rounded-xl font-bold text-sm tracking-wide hover:bg-emerald-700 transition-all">
+                            Open PDF in New Tab
+                        </a>
+                    </div>
+                </iframe>
+            </div>
+            
+            <!-- Controls / Meta Footer -->
+            <div class="bg-slate-50 border-t border-slate-100 p-4 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="p-2 bg-white rounded-lg border border-slate-200">
+                        <svg class="w-5 h-5 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold text-slate-700 uppercase tracking-tight">Full Generation Report</p>
+                        <p class="text-[10px] text-slate-400">PDF Format • High Resolution</p>
+                    </div>
+                </div>
+                <a href="reports/Hart Backup_FamilyTree_Generation.pdf" download class="text-[11px] font-black text-emerald-800 uppercase tracking-widest border-b-2 border-emerald-800/20 hover:border-emerald-800 transition-all pb-0.5">
+                    Download for Offline Viewing
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Consistent Footer -->
+    <footer class="mt-auto py-12 text-center border-t border-slate-100 bg-white">
+        <p class="serif-font text-emerald-900 text-2xl italic">&copy; <span id="yr"></span> Hart Family Archives</p>
+        <p class="text-[9px] mt-4 text-slate-300 uppercase tracking-[0.6em] font-black italic">Fáilte</p>
+    </footer>
+
+    <script>
+        document.getElementById('yr').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
