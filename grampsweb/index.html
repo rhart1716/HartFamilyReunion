@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2G90LQ5B2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-H2G90LQ5B2');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hart Family Archives | Heritage Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: #334155;
+            background-color: #F8FAF9;
+        }
+        .serif-font {
+            font-family: 'Playfair Display', serif;
+        }
+        .heritage-header {
+            background: linear-gradient(135deg, #064E3B 0%, #022C22 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .header-bg-animate {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+            opacity: 0.15;
+            animation: grainShift 20s linear infinite;
+        }
+        @keyframes grainShift {
+            0% { background-position: 0 0; }
+            100% { background-position: 500px 500px; }
+        }
+        .slope-edge {
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+        .static-card {
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        .btn-emerald {
+            background-color: #065F46;
+            color: white;
+            transition: all 0.2s;
+        }
+        .btn-emerald:hover {
+            background-color: #047857;
+            transform: translateY(-1px);
+        }
+        .btn-orange {
+            background-color: #C2410C;
+            color: white;
+            transition: all 0.2s;
+        }
+        .btn-orange:hover {
+            background-color: #9A3412;
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-20">
+
+    <!-- Hero Header with Architectural Slope -->
+    <header class="heritage-header w-full pt-16 pb-48 px-4 text-center slope-edge shadow-2xl">
+        <div class="header-bg-animate"></div>
+
+        <div class="relative z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full border border-emerald-400/30 bg-emerald-900/40 text-emerald-300 text-[10px] font-bold uppercase tracking-[0.3em] mb-8">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                Official Family Record
+            </div>
+            <h1 class="text-5xl md:text-7xl serif-font font-bold mb-6 text-slate-50 italic">Hart Family History</h1>
+            <p class="text-lg md:text-xl max-w-2xl mx-auto text-emerald-100/60 font-light leading-relaxed">
+                A collaborative effort to log our family’s journey across generations. We invite every member of the clan to explore our roots and help contribute to our growing story.
+            </p>
+        </div>
+    </header>
+
+    <main class="container mx-auto max-w-6xl px-4 -mt-32 relative z-20">
+
+        <!-- Ultra-thin Minimalist Update Indicator -->
+        <div class="flex justify-center mb-6">
+            <div class="flex items-center gap-2 text-slate-400/60">
+                <span class="text-[9px] font-medium uppercase tracking-[0.2em]">Latest Record Added:</span>
+                <span id="last-updated" class="text-[9px] font-semibold text-slate-400 tracking-wider">April 20, 2026</span>
+            </div>
+        </div>
+
+        <!-- Navigation Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20 items-stretch">
+
+            <!-- TILE 1: HERITAGE PORTAL -->
+            <section class="static-card rounded-2xl p-8 border-t-8 border-emerald-700">
+                <div class="flex-grow">
+                    <div class="mb-8 flex justify-between items-center">
+                        <div class="p-3 bg-emerald-50 rounded-xl text-emerald-800">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <span class="text-[10px] font-bold text-emerald-700/60 uppercase tracking-widest bg-emerald-50/50 px-3 py-1 rounded-full border border-emerald-100">Public Access</span>
+                    </div>
+                    <h2 class="serif-font text-2xl text-slate-900 mb-4">Heritage Portal</h2>
+                    <p class="text-sm text-slate-500 mb-8 leading-relaxed">
+                        A simplified way to browse our family lineage. Access the primary tree data and curated photo archives from our collective history.
+                    </p>
+
+                    <div class="space-y-3 mb-8">
+                        <a href="familyData/individuals.html" class="flex items-center justify-between p-3 rounded-xl bg-emerald-50 border border-emerald-100 group hover:bg-emerald-100 transition-colors">
+                            <span class="text-xs font-bold text-emerald-900 uppercase tracking-tight">Browse Family Tree</span>
+                            <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </a>
+                        <a href="/landing-page/familyPhotos.html" class="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-100 hover:bg-slate-100 transition-colors">
+                            <span class="text-xs font-bold text-slate-700 uppercase tracking-tight">Photo Galleries</span>
+                            <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        </a>
+                        <a href="familyCalendar/Calendar/2026/fullyearlinked.html" class="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-100 hover:bg-slate-100 transition-colors">
+                            <span class="text-xs font-bold text-slate-700 uppercase tracking-tight">Family Calendar</span>
+                            <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="space-y-3">
+                    <a href="familyTree.html" class="btn-emerald block w-full py-3.5 text-center rounded-xl text-sm font-bold tracking-wide flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        View Family Tree PDF
+                    </a>
+                </div>
+            </section>
+
+            <!-- TILE 2: RESEARCH HUB -->
+            <section class="static-card rounded-2xl p-8 border-t-8 border-slate-300">
+                <div class="flex-grow">
+                    <div class="mb-8 flex justify-between items-center">
+                        <div class="p-3 bg-slate-100 rounded-xl text-slate-800">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        </div>
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest bg-slate-50 px-3 py-1 rounded-full border border-slate-100">Analysis Mode</span>
+                    </div>
+                    <h2 class="serif-font text-2xl text-slate-900 mb-4 italic">Research Hub</h2>
+                    <p class="text-sm text-slate-600 mb-8 leading-relaxed">
+                        A direct window into the primary database. Designed for family members looking to perform deeper research or generate custom reports.
+                    </p>
+
+                    <div class="p-4 rounded-xl border border-dashed border-slate-300 bg-slate-50/50 mb-4">
+                        <div class="flex justify-between items-center text-[11px] mb-2">
+                            <span class="text-slate-500 font-semibold">Guest User</span>
+                            <span class="text-slate-900 font-mono font-bold">family</span>
+                        </div>
+                        <div class="flex justify-between items-center text-[11px]">
+                            <span class="text-slate-500 font-semibold">Guest Password</span>
+                            <span class="text-emerald-800 font-mono font-bold">guest</span>
+                        </div>
+                    </div>
+                    <p class="text-[10px] text-slate-500 italic mb-8 leading-snug">
+                        * No registration required for data exploration. Please use the guest credentials above to begin your research.
+                    </p>
+                </div>
+                <div class="space-y-3">
+                    <a href="https://tree.hartfamilytree.org" class="btn-emerald block w-full py-3.5 text-center rounded-xl text-sm font-bold uppercase tracking-widest">Explore Database</a>
+                </div>
+            </section>
+
+            <!-- TILE 3: COLLABORATION -->
+            <section class="static-card rounded-2xl p-8 border-t-8 border-orange-600 bg-orange-50/20 ring-1 ring-orange-100 shadow-xl">
+                <div class="flex-grow">
+                    <div class="mb-8 flex justify-between items-center">
+                        <div class="p-3 bg-orange-100 rounded-xl text-orange-800">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                        </div>
+                        <span class="text-[10px] font-bold text-orange-600 uppercase tracking-widest bg-white px-3 py-1 rounded-full border border-orange-200">Editor Portal</span>
+                    </div>
+                    <h2 class="serif-font text-2xl text-slate-900 mb-4">Contribution</h2>
+                    <p class="text-sm text-slate-500 mb-8 leading-relaxed">
+                        We welcome any family member who wants to help grow the archive! Join us in documenting our story by linking records and uploading media.
+                    </p>
+
+                    <div class="relative p-5 border-l-4 border-orange-400 bg-white rounded-r-2xl mb-8 italic shadow-sm">
+                        <p class="text-[11px] text-orange-900 font-semibold leading-relaxed">Our history thrives when we all help piece it together.</p>
+                    </div>
+                </div>
+                <div class="space-y-3">
+                    <a href="https://tree.hartfamilytree.org" class="btn-orange block w-full py-3.5 text-center rounded-xl text-sm font-bold tracking-wide shadow-md">Editor Login</a>
+                    <p class="text-[10px] text-orange-800/70 text-center px-2">
+                        Ready to contribute? Click login and select "Register" to request editor access.
+                    </p>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Lower Panel -->
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+
+            <!-- Dynamic Outreach Section -->
+            <section class="lg:col-span-2 bg-slate-900 p-12 rounded-[2rem] text-white shadow-2xl relative overflow-hidden group">
+                <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-emerald-500/10 rounded-full blur-[80px]"></div>
+                <h3 class="serif-font text-3xl mb-6 text-orange-400">Record Correction</h3>
+                <p class="text-sm text-slate-400 leading-loose mb-10">
+                    Discovered a discrepancy or have a new document to share? Our database relies on the precision of the family collective. Submit your findings for review.
+                </p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScKuGN7kDbxzCM5hGJy0YVnT3qFfD0Au0mN8CZERqD-_iFikQ/viewform" class="inline-flex items-center gap-4 bg-white text-slate-900 px-8 py-3.5 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-orange-500 hover:text-white transition-all">
+                    Submit Evidence
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
+            </section>
+
+            <!-- Status Section -->
+            <section class="lg:col-span-3 bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm relative overflow-hidden">
+<div id="activity-section" style="margin-top: 30px; padding: 20px; background: #f9f9f9; border-radius: 8px;">
+    <h2>Recent Tree Activity</h2>
+    <div id="activity-feed">Loading recent updates...</div>
+</div>
+
+<script>
+    // This script looks for the file generated by your Python script
+    fetch('recent_activity.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('activity-feed').innerHTML = data;
+        })
+        .catch(err => {
+            document.getElementById('activity-feed').innerHTML = 'Check back soon for recent updates.';
+        });
+</script>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-32 text-center border-t border-slate-100 pt-16">
+        <p class="serif-font text-emerald-900 text-3xl italic">&copy; <span id="yr"></span> Hart Family Archives</p>
+        <p class="text-[9px] mt-16 text-slate-300 uppercase tracking-[0.6em] font-black">A Ryan Hart Production</p>
+    </footer>
+
+    <script>
+        // Set copyright year
+        document.getElementById('yr').textContent = new Date().getFullYear();
+
+        // Update last entry timestamp (placeholder for future automated update)
+        const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('last-updated').textContent = new Date().toLocaleDateString('en-US', dateOptions);
+    </script>
+</body>
+</html>
