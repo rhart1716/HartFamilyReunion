@@ -15,6 +15,7 @@
     <title>Hart Family Archives | Heritage Edition</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
         body {
             font-family: 'Outfit', sans-serif;
@@ -76,7 +77,7 @@
     <main class="container mx-auto max-w-5xl px-4 -mt-24 relative z-20">
 
         <!-- 4-Grid Navigation -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
 
             <!-- 1. Interactive Tree (Emerald) -->
             <section class="feature-card rounded-3xl p-8 border-t-4 border-emerald-600 flex flex-col">
@@ -85,7 +86,7 @@
                 </div>
                 <h3 class="serif-font text-2xl text-slate-900 mb-3">Interactive Family Tree</h3>
                 <p class="text-sm text-slate-500 leading-relaxed mb-6 flex-grow">Trace our collective lineage through our interactive, browsable family tree.</p>
-                <a href="https://pewu.github.io/topola-viewer/#/view?gen=2&indi=I0134&url=https%3A%2F%2Fhartfamilytree.org%2Fhart_family.ged" class="block w-full py-3 rounded-xl text-xs font-bold text-center btn-emerald transition-colors">Browse Lineage</a>
+                <a href="https://pewu.github.io/topola-viewer/#/view?gen=2&indi=I0134&url=https%3A%2F%2Fhartfamilytree.org%2FhartFamily.ged" class="block w-full py-3 rounded-xl text-xs font-bold text-center btn-emerald transition-colors">Browse Lineage</a>
             </section>
 
             <!-- 2. Photo Galleries (Orange) -->
@@ -95,7 +96,7 @@
                 </div>
                 <h3 class="serif-font text-2xl text-slate-900 mb-3">Photo Galleries</h3>
                 <p class="text-sm text-slate-500 leading-relaxed mb-6 flex-grow">A curated collection of photos captured during our bi-annual family reunions.</p>
-                <a href="/landing-page/familyPhotos.html" class="block w-full py-3 rounded-xl text-xs font-bold text-center btn-orange transition-colors">View Albums</a>
+                <a href="familyPhotos.html" class="block w-full py-3 rounded-xl text-xs font-bold text-center btn-orange transition-colors">View Albums</a>
             </section>
 
             <!-- 3. Family Calendar (Orange) -->
@@ -105,7 +106,7 @@
                 </div>
                 <h3 class="serif-font text-2xl text-slate-900 mb-3">Family Calendar</h3>
                 <p class="text-sm text-slate-500 leading-relaxed mb-6 flex-grow">A dedicated record of significant birthdays, anniversaries, and other historical dates.</p>
-                <a href="Hart Backup_birthday_report.pdf" class="block w-full py-3 rounded-xl text-xs font-bold text-center btn-orange transition-colors">View Calendar</a>
+                <a href="familyCalendar.html" class="block w-full py-3 rounded-xl text-xs font-bold text-center btn-orange transition-colors">View Calendar</a>
             </section>
 
             <!-- 4. PDF (Emerald) -->
@@ -115,15 +116,57 @@
                 </div>
                 <h3 class="serif-font text-2xl text-slate-900 mb-3">View Family Tree PDF</h3>
                 <p class="text-sm text-slate-500 leading-relaxed mb-6 flex-grow">Download or print a comprehensive, high-resolution chart of the entire documented family structure.</p>
-                <a href="familyTreePDF.pdf" class="block w-full py-3 rounded-xl text-xs font-bold text-center btn-emerald transition-colors">Download PDF</a>
+                <a href="familyTreePDF.html" class="block w-full py-3 rounded-xl text-xs font-bold text-center btn-emerald transition-colors">Download PDF</a>
             </section>
 
         </div>
 
+        <!-- 5. Spotlight: Family Statistics & Insights (Differentiated Dark Banner) -->
+        <section class="group rounded-3xl p-6 md:py-5 md:px-8 border-t-4 border-orange-500 bg-gradient-to-r from-[#064E3B] to-[#022C22] shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 mb-12 flex flex-col md:flex-row items-center gap-5 md:gap-6 relative overflow-hidden">
+            <!-- Subtle background texture matching the header -->
+            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10 mix-blend-overlay pointer-events-none"></div>
+            
+            <div class="relative z-10 w-14 h-14 md:w-12 md:h-12 shrink-0 rounded-xl bg-white/10 flex items-center justify-center text-orange-400 border border-white/10 backdrop-blur-sm">
+                <!-- Sleek analytics/infographic SVG -->
+                <svg class="w-7 h-7 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
+                </svg>
+            </div>
+            
+            <div class="relative z-10 flex-grow text-center md:text-left">
+                <h3 class="serif-font text-xl md:text-2xl text-emerald-50 font-semibold mb-1.5">Family Statistics & Historical Insights</h3>
+                <p class="text-sm md:text-xs text-emerald-200/80 leading-relaxed max-w-2xl">
+                    View demographic visualisations including sibling birth-order ages, surname frequencies, and gender ratios.
+                </p>
+            </div>
+            
+            <div class="relative z-10 w-full md:w-auto shrink-0 mt-2 md:mt-0">
+                <a href="familyStats.html" class="block w-full md:w-auto px-8 py-3.5 md:py-3 rounded-xl text-xs font-bold text-center btn-orange shadow-md transition-colors uppercase tracking-widest whitespace-nowrap">
+                    Explore Insights
+                </a>
+            </div>
+        </section>
+
+        <!-- Elegant Heritage Divider Line -->
+        <div class="relative my-16">
+            <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                <div class="w-full border-t border-slate-300"></div>
+            </div>
+            <div class="relative flex justify-center">
+                <span class="bg-[#FDFBF7] px-4 text-emerald-800/60">
+                    <!-- Heritage Diamond Ornament -->
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v18M3 12h18M12 8l-4 4 4 4 4-4-4-4z"/>
+                    </svg>
+                </span>
+            </div>
+        </div>
+
         <!-- SECTION DIVIDER: Community & Support Portal -->
-        <div class="mt-16 bg-slate-100/50 border-t border-slate-200 py-10 px-4 rounded-[2rem]">
+        <div class="bg-slate-200/70 border border-slate-300/80 py-10 px-4 rounded-[2rem]">
             <div class="container mx-auto max-w-5xl">
-                
+
                 <!-- 3/4 and 1/4 Grid Layout -->
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
 

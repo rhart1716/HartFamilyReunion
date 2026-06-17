@@ -1,215 +1,387 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-H2G90LQ5B2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-H2G90LQ5B2');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Family Stats Viewer</title>
+    <title>Family Demographics & Insights | Heritage Edition</title>
+
+    <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;700&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+
+    <!-- Google Fonts: Playfair Display (Serif) & Outfit (Sans-serif) -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Chart.js for interactive data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <style>
         body {
-            font-family: 'EB Garamond', serif;
-            color: #433A3F; /* Dark, slightly muted brown/purple for text */
+            font-family: 'Outfit', sans-serif;
+            color: #334155;
+            background-color: #FDFBF7;
         }
-        .irish-header-alt-font {
-            font-family: 'IM Fell English SC', serif;
+        .serif-font {
+            font-family: 'Playfair Display', serif;
         }
-
-        /* JPEG Selection Button Styling */
-        .jpeg-select-button {
-            display: inline-block;
-            font-weight: 600; /* semibold */
-            padding-top: 0.75rem; /* py-3 */
-            padding-bottom: 0.75rem; /* py-3 */
-            padding-left: 1.5rem; /* px-6 */
-            padding-right: 1.5rem; /* px-6 */
-            border-radius: 0.375rem; /* rounded-md */
-            font-size: 1.125rem; /* text-lg */
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); /* shadow-md */
-            transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
-            border: 1px solid transparent;
-            margin: 0.5rem; 
-            cursor: pointer;
-            background-color: #588157; /* Muted Green Button */
-            border-color: #3A5A40;
-            color: white;
+        .heritage-header {
+            background: linear-gradient(135deg, #064E3B 0%, #022C22 100%);
+            position: relative;
+            overflow: hidden;
         }
-        .jpeg-select-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); /* shadow-lg */
-            background-color: #3A5A40; /* Darker Muted Green */
+        .header-bg-animate {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+            opacity: 0.15;
+            animation: grainShift 30s linear infinite;
         }
-        .jpeg-select-button.active { /* Style for the currently active/selected button */
-            background-color: #D97706; /* Amber-600 */
-            border-color: #B45309; /* Amber-700 */
-            color: white;
-            box-shadow: 0 0 0 3px rgba(252, 251, 244, 0.5); /* Creamy outline */
+        @keyframes grainShift {
+            0% { background-position: 0 0; }
+            100% { background-position: 500px 500px; }
         }
-
-        /* Content Section Styling - for the main viewer area */
-        .content-section {
-            background-color: #FCFBF4; /* Creamy white section bg */
-            border: 2px solid #588157; /* Muted green border */
-            border-radius: 0.75rem; /* rounded-xl */
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); /* shadow-xl */
-            padding: 1.5rem; 
-            margin-bottom: 2rem; 
-            margin-top: 1rem; 
+        .slope-edge {
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
         }
-        .content-section h2 { 
-            font-family: 'IM Fell English SC', serif;
-            color: #3A5A40; 
-            font-size: 1.875rem; 
-            font-weight: 600; 
-            margin-bottom: 1.5rem; 
-            text-align: center;
+        .feature-card {
+            background: white;
+            border: 1px solid #E2E8F0;
+            transition: all 0.3s ease;
         }
-        
-        /* Image viewer styling */
-        .image-viewer-container {
-            width: 100%;
-            min-height: 300px; /* Minimum height for the container */
-            max-height: 75vh; /* Max height based on viewport */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden; 
-            border-radius: 0.5rem; 
-            border: 1px solid #A3B18A; /* Subtle border for the image area itself */
-            background-color: #F0F0E0; /* Light beige background for the container */
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #10B981;
         }
-        .image-viewer-image {
-            max-width: 100%;
-            max-height: 100%; /* Make image fill available space within max-height of container */
-            object-fit: contain; /* Scales image down to fit, preserving aspect ratio */
-            display: block; /* Remove extra space below image */
-            border-radius: 0.25rem; /* Slight rounding if image is smaller than container */
-        }
-        .image-viewer-placeholder {
-            display: flex; /* Used by JS to show/hide */
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%; /* Fill the container */
-            min-height: 300px; /* Match container's min-height */
-            color: #433A3F;
-            font-size: 1.25rem;
-            text-align: center;
-        }
-
-        .themed-header-link {
-            color: #F2E8CF; 
-            text-decoration: underline;
-            font-weight: 500;
-        }
-        .themed-header-link:hover {
-            color: #FFF; 
-        }
-
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
     </style>
 </head>
-<body class="bg-gradient-to-br from-beige-100 to-green-100 min-h-screen flex flex-col items-center pt-10 pb-10 px-4">
+<body class="min-h-screen pb-20">
 
-    <div class="container mx-auto max-w-5xl w-full">
-        <header class="text-center mb-6 py-8 shadow-lg" style="background-color: #386641; border-radius: 0.5rem;">
-            <h1 class="text-3xl md:text-4xl font-bold irish-header-alt-font mb-3" style="color: #F2E8CF;">Family Stats Viewer</h1>
-            <p class="text-md" style="color: #D4C2AD; padding-left: 1rem; padding-right: 1rem;">
-                Select an report from the buttons below to view.
+    <header class="heritage-header w-full pt-20 pb-36 px-4 text-center slope-edge shadow-2xl">
+        <div class="header-bg-animate"></div>
+        <div class="relative z-10 max-w-5xl mx-auto">
+            <h1 class="text-4xl md:text-6xl serif-font font-bold mb-4 text-emerald-50 italic">Demographic Insights</h1>
+            <p class="text-md md:text-lg text-emerald-100/80 font-light max-w-2xl mx-auto leading-relaxed">
+                Discover historical trends, generational distributions, and family structures compiled across generations of documented records. Hover over the charts below to explore the data.
             </p>
-            
-        </header>
-        
-        <main class="w-full">
-            <div id="jpegButtonContainer" class="flex flex-wrap justify-center items-center gap-2 md:gap-4 mb-6 px-2">
-                <button class="jpeg-select-button" data-jpeg-src="reports/surNames.jpg" data-jpeg-title="Total Family by Last Name">
-                    Surname
-                </button>
-                <button class="jpeg-select-button" data-jpeg-src="reports/numberOfChildren.jpg" data-jpeg-title="Number of Children per Family">
-                    Number of Children
-                </button>
-                <button class="jpeg-select-button" data-jpeg-src="reports/gender.jpg" data-jpeg-title="Family by Gender">
-                    Gender
-                </button>
-                <button class="jpeg-select-button" data-jpeg-src="reports/birthMonth.jpg" data-jpeg-title="Family by Birth Month">
-                    Birth Month
-                </button>
-                <button class="jpeg-select-button" data-jpeg-src="reports/ageFirstChild.jpg" data-jpeg-title="Age When Mother Had First Child">
-                    Age When First Child Was Born
-                </button>  
-                <button class="jpeg-select-button" data-jpeg-src="reports/ageLastChild.jpg" data-jpeg-title="Age When Mother Had Last Child">
-                    Age When Last Child Was Born
-                </button>  
-             
+        </div>
+    </header>
+
+    <main class="container mx-auto max-w-6xl px-4 -mt-20 relative z-20">
+
+        <section class="feature-card rounded-2xl p-4 md:py-4 md:px-6 border-l-4 border-emerald-600 bg-white shadow-md flex flex-col md:flex-row items-center justify-between gap-4 mb-10 max-w-5xl mx-auto">
+            <div class="flex items-center gap-4 text-left">
+                <div class="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-800 shrink-0">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
                 </div>
-
-            <section class="content-section">
-                <h2 id="jpegViewerTitle" class="irish-header-alt-font">Here's a Look at Our Family by the Report Selected:</h2>
-                <div class="image-viewer-container">
-                    <img id="jpegViewerImage" src="#" alt="Selected family image" class="image-viewer-image" style="display: none;">
-                    <div id="jpegViewerPlaceholderText" class="image-viewer-placeholder">
-                        <p>Select an report from the buttons above to view it here.</p>
-                    </div>
+                <div>
+                    <h4 class="serif-font font-bold text-base text-slate-800">Dynamic Data Visualization</h4>
+                    <p class="text-xs text-slate-500 font-normal leading-relaxed mt-1">
+                        Feel free to tap or hover over specific points, bars, and slices to view exact historical figures.
+                    </p>
                 </div>
-            </section>
-        </main>
-        
-        <footer class="text-center mt-12 py-6 border-t" style="border-color: #A3B18A;">
-            <p class="font-semibold" style="color: #3A5A40;">&copy; <span id="currentYear"></span> Hart Family. All rights reserved.</p>
-            <p class="text-sm mt-1" style="color: #D97706;">Fáilte!</p>
-        </footer>
-    </div>
+            </div>
+            <div class="w-full md:w-auto shrink-0 text-center">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScKuGN7kDbxzCM5hGJy0YVnT3qFfD0Au0mN8CZERqD-_iFikQ/viewform" target="_blank" class="inline-flex items-center justify-center gap-2 w-full md:w-auto px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-white rounded-lg text-xs font-bold uppercase tracking-wider transition-colors shadow-sm">
+                    Submit Correction
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    </svg>
+                </a>
+            </div>
+        </section>
 
-   <script>
-        // Set current year in footer
-        if(document.getElementById('currentYear')) {
-            document.getElementById('currentYear').textContent = new Date().getFullYear();
-        }
+        <!-- Charts Grid: Using 2 columns on large screens for better chart visibility -->
+        <div id="chartsGrid" class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <!-- Dynamic Chart Cards will be injected here -->
+        </div>
 
-        const jpegButtons = document.querySelectorAll('.jpeg-select-button');
-        const jpegViewerImage = document.getElementById('jpegViewerImage');
-        const jpegViewerTitle = document.getElementById('jpegViewerTitle');
-        const jpegPlaceholder = document.getElementById('jpegViewerPlaceholderText');
+        <div class="relative my-16 max-w-4xl mx-auto">
+            <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                <div class="w-full border-t border-slate-200"></div>
+            </div>
+            <div class="relative flex justify-center">
+                <span class="bg-[#FDFBF7] px-4 text-emerald-800/40">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2L9 9H2L7 14L5 21L12 17L19 21L17 14L22 9H15L12 2Z" />
+                    </svg>
+                </span>
+            </div>
+        </div>
 
-        function clearActiveButton() {
-            jpegButtons.forEach(btn => {
-                btn.classList.remove('active');
-            });
-        }
+    </main>
 
-        jpegButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const jpegSrc = this.getAttribute('data-jpeg-src');
-                const jpegTitle = this.getAttribute('data-jpeg-title') || "Image Viewer";
-                
-                clearActiveButton();
-                this.classList.add('active');
+    <footer class="mt-8 text-center pb-12">
+        <p class="serif-font text-slate-400 text-xl italic">&copy; <span id="yr"></span> Hart Family Archives</p>
+        <p class="text-[9px] mt-4 text-slate-400/60 uppercase tracking-[0.6em] font-black">A Ryan Hart Production</p>
+    </footer>
 
-                if (jpegSrc) {
-                    jpegViewerImage.src = jpegSrc;
-                    jpegViewerImage.alt = jpegTitle; // Update alt text as well
-                    jpegViewerImage.style.display = 'block'; // Show image
-                    jpegPlaceholder.style.display = 'none'; // Hide placeholder
-                    jpegViewerTitle.textContent = jpegTitle;
-                } else {
-                    jpegViewerImage.src = '#'; // Clear src or set to a transparent pixel
-                    jpegViewerImage.alt = 'No image selected';
-                    jpegViewerImage.style.display = 'none'; // Hide image
-                    jpegPlaceholder.style.display = 'flex'; // Show placeholder
-                    jpegViewerTitle.textContent = "Select an Image";
+    <script>
+        document.getElementById('yr').textContent = new Date().getFullYear();
+
+        // Global Chart.js Font Configuration to match the Heritage theme
+        Chart.defaults.font.family = "'Outfit', sans-serif";
+        Chart.defaults.color = '#64748b'; // slate-500
+        Chart.defaults.scale.grid.color = '#f1f5f9'; // slate-100
+
+        // Theme Colors
+        const colors = {
+            emerald: '#059669',
+            emeraldLight: '#34d399',
+            emeraldDark: '#064E3B',
+            amber: '#d97706',
+            slate: '#475569',
+            slateLight: '#94a3b8'
+        };
+
+        /**
+         * DATA REGISTRY: All chart data is defined here.
+         */
+        const REPORTS_DATA = [
+            {
+                id: "surnames",
+                title: "Surname Density & Distribution",
+                category: "Naming Traditions",
+                desc: "Relative surname frequencies within active family records. This highlights core branches of our common descent.",
+                config: {
+                    type: 'bar',
+                    data: {
+                        labels: ['Hart', 'Rebholz', 'McEntee', 'Bringley', 'Burdick', 'Terreri', 'Higgins', 'Shea', 'Dempsey', 'Neary', 'Other'],
+                        datasets: [{
+                            label: 'Recorded Individuals',
+                            data: [76, 17, 16, 9, 8, 7, 5, 5, 4, 4, 63],
+                            backgroundColor: colors.emerald,
+                            borderRadius: 4,
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y', // Makes it a horizontal bar chart
+                        plugins: { legend: { display: false } }
+                    }
                 }
+            },
+            {
+                id: "fornames",
+                title: "Traditional Forename Frequency",
+                category: "Naming Traditions",
+                desc: "Our family’s most popular forenames reflect deep historical and cultural roots across recorded lineage.",
+                config: {
+                    type: 'bar',
+                    data: {
+                        labels: ['Daniel', 'Kathryn', 'James', 'John', 'Joseph', 'Matthew', 'Patrick', 'Rose', 'Elizabeth', 'Mary', 'Michael'],
+                        datasets: [{
+                            label: 'Occurrences',
+                            data: [10, 8, 6, 6, 6, 6, 6, 6, 5, 5, 5],
+                            backgroundColor: colors.emeraldLight,
+                            borderRadius: 4,
+                        }]
+                    },
+                    options: {
+                        plugins: { legend: { display: false } }
+                    }
+                }
+            },
+            {
+                id: "firstChild",
+                title: "Maternal Age at First Child",
+                category: "Maternal Milestones",
+                desc: "Generational metrics highlighting mothers’ ages when welcoming their first-born children.",
+                config: {
+                    type: 'line',
+                    data: {
+                        labels: ['< 20', '21-23', '24-25', '26-28', '29-30', '31-33', '34-36'],
+                        datasets: [{
+                            label: 'Number of Mothers',
+                            data: [2, 11, 11, 20, 20, 11, 4],
+                            borderColor: colors.amber,
+                            backgroundColor: 'rgba(217, 119, 6, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4 // Smooth curves
+                        }]
+                    },
+                    options: { plugins: { legend: { display: false } } }
+                }
+            },
+            {
+                id: "lastChild",
+                title: "Maternal Age at Last Child",
+                category: "Maternal Milestones",
+                desc: "An analytical view tracking maternal ages recorded during final sibling births.",
+                config: {
+                    type: 'line',
+                    data: {
+                        labels: ['< 25', '26-28', '29-31', '32-34', '35-37', '38-40', '40+'],
+                        datasets: [{
+                            label: 'Number of Mothers',
+                            data: [5, 11, 21, 21, 11, 7, 2],
+                            borderColor: colors.emerald,
+                            backgroundColor: 'rgba(5, 150, 105, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: { plugins: { legend: { display: false } } }
+                }
+            },
+            {
+                id: "ageAtMarrige",
+                title: "Age at Marriage Timeline",
+                category: "Marriage Milestones",
+                desc: "Displays individual marriage occurrences relative to age ranges across the recorded generations.",
+                config: {
+                    type: 'bar',
+                    data: {
+                        labels: ['< 20', '21-23', '24-26', '27-29', '30-32', '33-35', '36-39', '40+'],
+                        datasets: [
+                            {
+                                label: 'Total Occurrences',
+                                data: [3, 16, 19, 18, 10, 5, 4, 4],
+                                backgroundColor: colors.slate,
+                                borderRadius: 4
+                            }
+                        ]
+                    },
+                    options: {
+                        plugins: {
+                            legend: { display: false }
+                        }
+                    }
+                }
+            },
+            {
+                id: "familyCount",
+                title: "Family Sibling Counts",
+                category: "Household Units",
+                desc: "An evaluation of sibling sizes across historical units. Focus leans heavily on two-child and three-child families.",
+                config: {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['1 Child', '2 Children', '3 Children', '4 Children', '5 Children', '8-10 Children'],
+                        datasets: [{
+                            data: [11, 36, 18, 5, 6, 3],
+                            backgroundColor: [
+                                colors.slateLight,
+                                colors.emeraldLight,
+                                colors.emerald,
+                                colors.emeraldDark,
+                                colors.amber,
+                                '#b45309' // darker amber
+                            ],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        cutout: '65%', // Thinner doughnut ring
+                        plugins: { legend: { position: 'right' } }
+                    }
+                }
+            },
+            {
+                id: "genderDistribution",
+                title: "Generational Gender Distribution",
+                category: "Household Units",
+                desc: "A biological audit of cataloged descendants. Our records show a highly balanced, structurally stable demographic split.",
+                config: {
+                    type: 'pie',
+                    data: {
+                        labels: ['Men', 'Women'],
+                        datasets: [{
+                            data: [113, 101],
+                            backgroundColor: [colors.emerald, colors.amber],
+                            borderWidth: 2,
+                            borderColor: '#ffffff'
+                        }]
+                    },
+                    options: {
+                        plugins: { legend: { position: 'bottom' } }
+                    }
+                }
+            },
+            {
+                id: "birthMonth",
+                title: "Birth Frequency by Month",
+                category: "Seasonal Cycles",
+                desc: "A seasonal overview organizing birth records chronologically. Spring and early Summer represent the busiest periods.",
+                config: {
+                    type: 'radar',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                        datasets: [{
+                            label: 'Births',
+                            data: [15, 18, 18, 22, 25, 20, 20, 17, 10, 14, 18, 17],
+                            backgroundColor: 'rgba(5, 150, 105, 0.2)', // Emerald with opacity
+                            borderColor: colors.emerald,
+                            pointBackgroundColor: colors.amber,
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        scales: { r: { ticks: { display: false } } }, // Hide internal numbers on radar
+                        plugins: { legend: { display: false } }
+                    }
+                }
+            }
+        ];
+
+        function renderDashboard() {
+            const grid = document.getElementById('chartsGrid');
+            grid.innerHTML = '';
+
+            REPORTS_DATA.forEach((report) => {
+                // 1. Create the Card Container
+                const card = document.createElement('div');
+                card.className = "feature-card rounded-2xl p-6 md:p-8 flex flex-col h-full";
+
+                // 2. Build Card Inner HTML (Title, Category, Desc, and the Canvas wrapper)
+                card.innerHTML = `
+                    <div class="mb-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-[10px] bg-slate-100 text-slate-600 font-bold px-3 py-1.5 rounded-md uppercase tracking-wider">${report.category}</span>
+                        </div>
+                        <h3 class="serif-font text-2xl font-bold text-slate-800 mb-2 leading-tight">${report.title}</h3>
+                        <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">${report.desc}</p>
+                    </div>
+
+                    <!-- Chart Wrapper (Needs relative positioning and constrained height for Chart.js) -->
+                    <div class="relative w-full flex-grow min-h-[250px] mt-auto">
+                        <canvas id="canvas-${report.id}"></canvas>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+
+                // 3. Initialize Chart.js on the newly created Canvas element
+                const ctx = document.getElementById(`canvas-${report.id}`).getContext('2d');
+
+                // Merge default responsive options with specific chart options
+                const chartConfig = {
+                    ...report.config,
+                    options: {
+                        ...report.config.options,
+                        responsive: true,
+                        maintainAspectRatio: false, // Ensures it stretches to fill the min-h-[250px] container
+                        animation: {
+                            duration: 1500,
+                            easing: 'easeOutQuart'
+                        }
+                    }
+                };
+
+                new Chart(ctx, chartConfig);
             });
-        });
+        }
+
+        // Wait for DOM and libraries to load, then render
+        window.addEventListener('load', renderDashboard);
 
     </script>
-
 </body>
 </html>

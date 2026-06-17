@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2G90LQ5B2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -8,22 +9,24 @@
       gtag('js', new Date());
       gtag('config', 'G-H2G90LQ5B2');
     </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Family Reunion Pictures | Heritage Edition</title>
+    <title>Hart Family Photo Albums | Heritage Edition</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
         body {
             font-family: 'Outfit', sans-serif;
             color: #334155;
-            background-color: #F8FAF9;
+            background-color: #FDFBF7; /* Warm Irish cream stone tone */
         }
         .serif-font {
             font-family: 'Playfair Display', serif;
         }
         .heritage-header {
-            background: linear-gradient(135deg, #064E3B 0%, #022C22 100%);
+            background: linear-gradient(135deg, #052e16 0%, #022c22 100%); /* Deep Irish Forest and Shamrock backdrop */
             position: relative;
             overflow: hidden;
         }
@@ -32,7 +35,7 @@
             inset: 0;
             background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
             opacity: 0.15;
-            animation: grainShift 20s linear infinite;
+            animation: grainShift 30s linear infinite;
         }
         @keyframes grainShift {
             0% { background-position: 0 0; }
@@ -41,72 +44,143 @@
         .slope-edge {
             clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
         }
-        .year-card {
-            background: #ffffff;
+        .feature-card {
+            background: white;
             border: 1px solid #E2E8F0;
             transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
         }
-        .year-card:hover {
-            border-color: #059669;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
         }
     </style>
 </head>
-<body>
+<body class="min-h-screen pb-20">
 
-    <header class="heritage-header slope-edge pt-16 pb-24 text-white text-center">
+    <header class="heritage-header w-full pt-20 pb-40 px-4 slope-edge shadow-2xl">
         <div class="header-bg-animate"></div>
-        <div class="relative z-10 container mx-auto px-6">
-            <h1 class="serif-font text-4xl md:text-6xl font-bold mb-4">Family Reunion Pictures</h1>
-            <p class="text-emerald-100 text-lg md:text-xl font-light tracking-wide italic">Cherishing our family moments, year after year.</p>
+        <div class="relative z-10 max-w-5xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto">
+                <h1 class="text-5xl md:text-7xl serif-font font-bold mb-6 text-emerald-50 italic">Hart Family Photo Albums</h1>
+                <p class="text-lg md:text-xl text-emerald-100/80 font-light leading-relaxed">
+                    Preserving generations of milestones, reunions, and everyday memories. Explore our shared visual collections and contribute your own moments.
+                </p>
+            </div>
         </div>
     </header>
 
-    <main class="container mx-auto px-6 -mt-8 relative z-20 pb-20">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <main class="container mx-auto max-w-5xl px-4 -mt-20 relative z-20">
+
+        <!-- Specialty Memorabilia Collections (Irish Saffron Gold & Clover Green) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
             
-            <a href="https://photos.app.goo.gl/yTzroBpt2c9ya3Mu5" target="_blank" class="year-card p-8 rounded-xl text-center border-t-4 border-t-emerald-700">
-                <span class="serif-font text-3xl font-bold text-emerald-900">2025</span>
-                <p class="mt-2 text-slate-500 font-semibold uppercase tracking-widest text-sm text-nowrap">Hart Reunion</p>
+            <!-- Cups Album Button (Celtic Saffron/Gold Accent) -->
+            <a href="https://photos.app.goo.gl/SSzkLhqU8waC7Uav7" target="_blank" class="feature-card rounded-2xl py-3.5 px-6 border-l-4 border-amber-500 flex items-center gap-4 hover:shadow-md transition-all">
+                <div class="w-10 h-10 shrink-0 rounded-xl bg-amber-50 flex items-center justify-center text-amber-700">
+                    <!-- Elegant Custom Coffee/Cup SVG -->
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 8h1a3 3 0 110 6h-1M5 8h12v7a4 4 0 01-4 4H9a4 4 0 01-4-4V8z" />
+                    </svg>
+                </div>
+                <div class="text-left">
+                    <span class="serif-font text-base font-bold text-slate-900 block leading-tight">Custom Reunion Cups</span>
+                    <span class="text-[10px] uppercase tracking-wider text-amber-600 font-semibold">Specialty Gallery</span>
+                </div>
             </a>
 
-            <a href="https://photos.app.goo.gl/acjHFBrzDnLjCdb48" target="_blank" class="year-card p-8 rounded-xl text-center border-t-4 border-t-orange-700">
-                <span class="serif-font text-3xl font-bold text-orange-900">2023</span>
-                <p class="mt-2 text-slate-500 font-semibold uppercase tracking-widest text-sm text-nowrap">Hart Reunion</p>
+            <!-- Shirts Album Button (Irish Clover Green Accent) -->
+            <a href="https://photos.app.goo.gl/8Z5tPQ5uk4SLwEAeA" target="_blank" class="feature-card rounded-2xl py-3.5 px-6 border-l-4 border-emerald-600 flex items-center gap-4 hover:shadow-md transition-all">
+                <div class="w-10 h-10 shrink-0 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-700">
+                    <!-- Clean Folded T-Shirt SVG -->
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 4V3a1 1 0 011-1h4a1 1 0 011 1v1M4 8V6a2 2 0 012-2h12a2 2 0 012 2v2M4 8l2 3v9a2 2 0 002 2h8a2 2 0 002-2v-9l2-3M9 10h6" />
+                    </svg>
+                </div>
+                <div class="text-left">
+                    <span class="serif-font text-base font-bold text-slate-900 block leading-tight">Commemorative Shirts</span>
+                    <span class="text-[10px] uppercase tracking-wider text-emerald-600 font-semibold">Specialty Gallery</span>
+                </div>
+            </a>
+            
+        </div>
+
+        <!-- Year Galleries Grid (Alternating Irish Greens and Warm Saffrons) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+
+            <!-- 2025 Album Card (Emerald/Clover Green) -->
+            <a href="https://photos.app.goo.gl/yTzroBpt2c9ya3Mu5" target="_blank" class="feature-card rounded-3xl p-8 border-t-4 border-emerald-600 flex flex-col items-center text-center">
+                <div class="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-700 mb-6">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                </div>
+                <span class="serif-font text-3xl font-bold text-slate-900">2025</span>
+                <p class="mt-2 text-slate-500 font-semibold uppercase tracking-widest text-xs">Hart Reunion</p>
             </a>
 
-            <a href="https://photos.app.goo.gl/oVwMDqHVNzncBuA29" target="_blank" class="year-card p-8 rounded-xl text-center border-t-4 border-t-amber-600">
-                <span class="serif-font text-3xl font-bold text-amber-900">2021</span>
-                <p class="mt-2 text-slate-500 font-semibold uppercase tracking-widest text-sm text-nowrap">Hart Reunion</p>
+            <!-- 2023 Album Card (Irish Flag Saffron/Orange) -->
+            <a href="https://photos.app.goo.gl/acjHFBrzDnLjCdb48" target="_blank" class="feature-card rounded-3xl p-8 border-t-4 border-orange-500 flex flex-col items-center text-center">
+                <div class="w-12 h-12 rounded-xl bg-orange-50 flex items-center justify-center text-orange-600 mb-6">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                </div>
+                <span class="serif-font text-3xl font-bold text-slate-900">2023</span>
+                <p class="mt-2 text-slate-500 font-semibold uppercase tracking-widest text-xs">Hart Reunion</p>
             </a>
 
-            <a href="https://photos.app.goo.gl/qjGEYFXUys3frFiK9" target="_blank" class="year-card p-8 rounded-xl text-center border-t-4 border-t-slate-600">
+            <!-- 2021 Album Card (Celtic Saffron/Gold) -->
+            <a href="https://photos.app.goo.gl/oVwMDqHVNzncBuA29" target="_blank" class="feature-card rounded-3xl p-8 border-t-4 border-amber-500 flex flex-col items-center text-center">
+                <div class="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center text-amber-600 mb-6">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                </div>
+                <span class="serif-font text-3xl font-bold text-slate-900">2021</span>
+                <p class="mt-2 text-slate-500 font-semibold uppercase tracking-widest text-xs">Hart Reunion</p>
+            </a>
+
+            <!-- 2020 Album Card (Deep Forest/Irish Moss Green) -->
+            <a href="https://photos.app.goo.gl/qjGEYFXUys3frFiK9" target="_blank" class="feature-card rounded-3xl p-8 border-t-4 border-emerald-800 flex flex-col items-center text-center">
+                <div class="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-800 mb-6">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"></path></svg>
+                </div>
                 <span class="serif-font text-3xl font-bold text-slate-900">2020</span>
-                <p class="mt-2 text-slate-500 font-semibold uppercase tracking-widest text-sm text-nowrap">Hart Reunion</p>
+                <p class="mt-2 text-slate-500 font-semibold uppercase tracking-widest text-xs">Hart Reunion</p>
             </a>
 
         </div>
 
-        <div class="mt-12 text-center bg-white/50 p-6 rounded-lg border border-emerald-100 max-w-2xl mx-auto shadow-sm">
-            <p class="text-slate-600 italic">
-                Click on a year to view the photo album. Feel free to add your own photos once you've opened the album!
+        <!-- Helpful Banner -->
+        <section class="feature-card rounded-3xl p-6 border border-emerald-100 bg-gradient-to-r from-white to-emerald-50/20 max-w-2xl mx-auto shadow-sm text-center mb-16">
+            <div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-800 mx-auto mb-4">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </div>
+            <p class="text-sm text-slate-600 italic leading-relaxed">
+                Click on any card to view the corresponding shared album. You are highly encouraged to add your own memories and captured photos once you have opened the album!
             </p>
+        </section>
+
+        <!-- Elegant Heritage Divider Line -->
+        <div class="relative my-16">
+            <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                <div class="w-full border-t border-slate-300"></div>
+            </div>
+            <div class="relative flex justify-center">
+                <span class="bg-[#FDFBF7] px-4 text-emerald-800/60">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v18M3 12h18M12 8l-4 4 4 4 4-4-4-4z"/>
+                    </svg>
+                </span>
+            </div>
         </div>
+
     </main>
 
-    <footer class="text-center py-12 border-t border-emerald-100 bg-white">
-        <p class="serif-font font-bold text-emerald-900">&copy; <span id="year"></span> Hart Family Archive</p>
-        <p class="text-sm mt-1 text-emerald-700 italic font-medium">Fáilte!</p>
+    <!-- Matches the Main Archive Footer Style -->
+    <footer class="mt-12 text-center pb-10">
+        <p class="serif-font text-slate-400 text-xl italic">&copy; <span id="yr"></span> Hart Family Archives</p>
+        <p class="text-[9px] mt-4 text-slate-400/50 uppercase tracking-[0.6em] font-black">A Ryan Hart Production</p>
     </footer>
 
     <script>
-        // Set the current year in footer automatically
-        document.getElementById('year').textContent = new Date().getFullYear();
+        document.getElementById('yr').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>

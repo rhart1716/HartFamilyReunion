@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Calendar | Hart Family Archives</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Outfit', sans-serif; color: #334155; background-color: #FDFBF7; }
+        .serif-font { font-family: 'Playfair Display', serif; }
+        .heritage-header { background: linear-gradient(135deg, #064E3B 0%, #022C22 100%); position: relative; overflow: hidden; }
+        .content-transition { transition: max-height 0.3s ease-in-out, opacity 0.3s ease; }
+        .hidden-content { max-height: 0; opacity: 0; overflow: hidden; }
+        .visible-content { max-height: 8000px; opacity: 1; }
+        .event-tag { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 999px; }
+    </style>
+</head>
+<body class="min-h-screen pb-20">
+
+    <header class="heritage-header w-full pt-16 pb-20 px-4 text-center shadow-xl">
+        <div class="relative z-10 max-w-3xl mx-auto">
+            <h1 class="text-4xl md:text-5xl serif-font font-bold mb-4 text-emerald-50 italic">Family Calendar</h1>
+            <p class="text-base md:text-lg text-emerald-100/80 font-light">Click on any month to expand the list and view milestones. Events are grouped by type.</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto max-w-3xl px-4 -mt-8 relative z-20">
+        <div id="calendar-container" class="space-y-4">
+            <!-- Calendar items injected by JavaScript -->
+        </div>
+
+        <!-- Elegant Heritage Divider Line -->
+        <div class="relative my-16">
+            <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                <div class="w-full border-t border-slate-300"></div>
+            </div>
+            <div class="relative flex justify-center">
+                <span class="bg-[#FDFBF7] px-4 text-emerald-800/60">
+                    <!-- Heritage Diamond Ornament -->
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v18M3 12h18M12 8l-4 4 4 4 4-4-4-4z"/>
+                    </svg>
+                </span>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-12 text-center pb-10">
+        <p class="serif-font text-slate-400 text-xl italic">&copy; <span id="yr"></span> Hart Family Archives</p>
+        <p class="text-[9px] mt-4 text-slate-400/50 uppercase tracking-[0.6em] font-black">A Ryan Hart Production</p>
+    </footer>
+
+    <script>
+        document.getElementById('yr').textContent = new Date().getFullYear();
+
+        const calendarData = {
+            "January": [
+                { day: 1, events: [ { type: "Birthday", desc: "Hart, Sarah (1992), 34" }, { type: "Anniversary", desc: "Verrioli, John (2003), 23" } ] },
+                { day: 3, events: [ { type: "Death", desc: "Hart, Rosemary (2009), 17" } ] },
+                { day: 4, events: [ { type: "Birthday", desc: "Ramos, Nestor (1978), 48" } ] },
+                { day: 7, events: [ { type: "Anniversary", desc: "Rebholz, Kathryn and Neary, Michael (1989), 37" } ] },
+                { day: 8, events: [ { type: "Birthday", desc: "Verrioli, Michael (1962), 64" } ] },
+                { day: 9, events: [ { type: "Birthday", desc: "LaForge, Amy (1962), 64" } ] },
+                { day: 13, events: [ { type: "Birthday", desc: "Brescia, Rose (1953), 73" }, { type: "Birthday", desc: "Lazo, Gabriel Dennis (2013), 13" } ] },
+                { day: 17, events: [ { type: "Birthday", desc: "Brownlee, Jeanne (1954), 72" }, { type: "Birthday", desc: "Caschera, Tom (1991), 35" } ] },
+                { day: 19, events: [ { type: "Birthday", desc: "D'Ettore, Nicole (1982), 44" }, { type: "Birthday", desc: "Dempsey, Patricia (1995), 31" }, { type: "Birthday", desc: "Clifford, Cooper Otto (2024), 2" }, { type: "Birthday", desc: "Bringley, Bennett Patrick (2017), 9" }, { type: "Birthday", desc: "Hart, Cole (2024), 2" }, { type: "Birthday", desc: "Wentz, Noah (2007), 19" }, { type: "Birthday", desc: "Kehrer, Ryan (1985), 41" } ] },
+                { day: 20, events: [ { type: "Birthday", desc: "Neary, Allison (1997), 29" } ] },
+                { day: 22, events: [ { type: "Birthday", desc: "Rebholz, Griffin (2019), 7" } ] },
+                { day: 24, events: [ { type: "Birthday", desc: "Hart, Christopher (2000), 26" } ] },
+                { day: 25, events: [ { type: "Birthday", desc: "Higgins, Pat (1957), 69" } ] },
+                { day: 26, events: [ { type: "Birthday", desc: "Burdick, Craig (1955), 71" } ] },
+                { day: 27, events: [ { type: "Birthday", desc: "Cougevan, Bridget (1965), 61" }, { type: "Birthday", desc: "Hiscock, Christine (1962), 64" } ] },
+                { day: 28, events: [ { type: "Death", desc: "Hart, Leon George (1990), 36" } ] },
+                { day: 29, events: [ { type: "Anniversary", desc: "Cuyler, Cate Marie and Clifford, Conor Lynch (2023), 3" }, { type: "Birthday", desc: "Hart, Megan (1993), 33" } ] },
+                { day: 31, events: [ { type: "Birthday", desc: "Shea, Patrick (1983), 43" }, { type: "Birthday", desc: "Graham, Lola Marie (2012), 14" } ] }
+            ],
+            "February": [
+                { day: 2, events: [ { type: "Birthday", desc: "Hart, James (1998), 28" } ] },
+                { day: 4, events: [ { type: "Birthday", desc: "Swisher, Rachel (1993), 33" } ] },
+                { day: 5, events: [ { type: "Birthday", desc: "Terreri, John (1951), 75" } ] },
+                { day: 6, events: [ { type: "Birthday", desc: "Byrne, Michelle Ann (1984), 42" }, { type: "Birthday", desc: "Bringley, Elizabeth (1980), 46" } ] },
+                { day: 7, events: [ { type: "Birthday", desc: "Stolte, Mark (2013), 13" } ] },
+                { day: 8, events: [ { type: "Birthday", desc: "Hart, James Anthony (2021), 5" }, { type: "Birthday", desc: "Hart, Julie Ann (1960), 66" }, { type: "Birthday", desc: "Kalweit, Kimberly (1967), 59" } ] },
+                { day: 9, events: [ { type: "Birthday", desc: "Terreri, Olivia Joy (2012), 14" } ] },
+                { day: 10, events: [ { type: "Birthday", desc: "Burdick, Kelly (1990), 36" }, { type: "Death", desc: "McEntee, Al (2006), 20" } ] },
+                { day: 11, events: [ { type: "Birthday", desc: "Hart, Mary Rose (2000), 26" } ] },
+                { day: 15, events: [ { type: "Birthday", desc: "Wallace, Tracy (1959), 67" }, { type: "Birthday", desc: "Higgins, Robert (1984), 42" }, { type: "Birthday", desc: "Hart, James (1995), 31" }, { type: "Birthday", desc: "Rebholz, Meghan (1995), 31" } ] },
+                { day: 17, events: [ { type: "Death", desc: "McEntee, Noreen (2005), 21" }, { type: "Birthday", desc: "Ramos, Sylvia Susan (2016), 10" } ] },
+                { day: 18, events: [ { type: "Birthday", desc: "McEntee, John (1951), 75" }, { type: "Birthday", desc: "Burke, Noreen (2007), 19" } ] },
+                { day: 19, events: [ { type: "Birthday", desc: "Terreri, Joseph John (2007), 19" }, { type: "Birthday", desc: "Moorhead, Margaret (1991), 35" } ] },
+                { day: 21, events: [ { type: "Birthday", desc: "Rebholz, Ryan (1986), 40" }, { type: "Birthday", desc: "Stolte, Colton (2016), 10" } ] },
+                { day: 22, events: [ { type: "Birthday", desc: "Verrioli, Carolann (1997), 29" } ] },
+                { day: 24, events: [ { type: "Birthday", desc: "McEntee, Jeffrey (1982), 44" }, { type: "Birthday", desc: "Wirth, Elaine (1957), 69" } ] },
+                { day: 25, events: [ { type: "Birthday", desc: "Hart, Callum Daniel (2022), 4" } ] },
+                { day: 27, events: [ { type: "Death", desc: "Ashton, Betty (1996), 30" } ] },
+                { day: 28, events: [ { type: "Birthday", desc: "McMahon, Amanda (1995), 31" } ] }
+            ],
+            "March": [
+                { day: 1, events: [ { type: "Birthday", desc: "Swisher, Josephine (1988), 38" }, { type: "Birthday", desc: "Hart, Amanda (1987), 39" } ] },
+                { day: 4, events: [ { type: "Birthday", desc: "Hart, John Joseph (1923), 103" }, { type: "Anniversary", desc: "Reed, Aubrey and Hart, Philip (2011), 15" }, { type: "Birthday", desc: "Terreri, Lucia Grace (2009), 17" }, { type: "Anniversary", desc: "Hart, Amanda and Spreng, Nicholas Andrew (2011), 15" } ] },
+                { day: 8, events: [ { type: "Anniversary", desc: "Predmore, Kristine and Graham, Scott (2008), 18" } ] },
+                { day: 9, events: [ { type: "Birthday", desc: "Summers, Cheryl (1979), 47" } ] },
+                { day: 13, events: [ { type: "Birthday", desc: "Oddsen, Myles David (2020), 6" } ] },
+                { day: 16, events: [ { type: "Birthday", desc: "Hart, Matthew (1960), 66" } ] },
+                { day: 17, events: [ { type: "Birthday", desc: "Hart, Patricia Ann (1935), 91" } ] },
+                { day: 20, events: [ { type: "Birthday", desc: "Graham, Liam Michael (2009), 17" }, { type: "Birthday", desc: "Bringley, Weston Robert (2019), 7" } ] },
+                { day: 21, events: [ { type: "Death", desc: "Bauman, Rosemary (1973), 53" }, { type: "Birthday", desc: "Hart, Ryan Edward (1981), 45" }, { type: "Birthday", desc: "Baily, Maddison (2001), 25" }, { type: "Birthday", desc: "Baily, Megan (2003), 23" } ] },
+                { day: 23, events: [ { type: "Birthday", desc: "McEntee, Mary Lee (1956), 70" } ] },
+                { day: 25, events: [ { type: "Birthday", desc: "Hart, Gregory (1949), 77" } ] },
+                { day: 26, events: [ { type: "Birthday", desc: "Burdick, Maeve Lucille (2021), 5" }, { type: "Birthday", desc: "Kehrer, Sullivan Shae (2014), 12" } ] },
+                { day: 29, events: [ { type: "Birthday", desc: "Ficalora, Martin (1976), 50" } ] },
+                { day: 31, events: [ { type: "Birthday", desc: "Hart, Claire Elizabeth (2020), 6" } ] }
+            ],
+            "April": [
+                { day: 2, events: [ { type: "Birthday", desc: "Bond, Erin (1963), 63" }, { type: "Birthday", desc: "Oke, Courtney (1983), 43" } ] },
+                { day: 3, events: [ { type: "Birthday", desc: "Joslyn, Conrad Matthew (2016), 10" } ] },
+                { day: 4, events: [ { type: "Birthday", desc: "Shea, Elisabeth (1989), 37" }, { type: "Birthday", desc: "Lazo, Oliver Thomas (2009), 17" } ] },
+                { day: 5, events: [ { type: "Birthday", desc: "Higgins, Daniel (1989), 37" }, { type: "Birthday", desc: "McEntee, Elise Renee (2011), 15" }, { type: "Birthday", desc: "Hart, Patrick (1991), 35" } ] },
+                { day: 6, events: [ { type: "Birthday", desc: "Spreng, Harrison Edward (2014), 12" } ] },
+                { day: 7, events: [ { type: "Birthday", desc: "McEntee, James (1981), 45" } ] },
+                { day: 8, events: [ { type: "Birthday", desc: "Fantagrossi, Flora (1951), 75" } ] },
+                { day: 10, events: [ { type: "Birthday", desc: "Miller, Matthew Daniel (2015), 11" } ] },
+                { day: 11, events: [ { type: "Anniversary", desc: "Byrne, Michelle Ann and Hart, Ryan Edward (2013), 13" } ] },
+                { day: 12, events: [ { type: "Birthday", desc: "McEntee, Sara (1976), 50" } ] },
+                { day: 13, events: [ { type: "Birthday", desc: "Hart, Danielle (1990), 36" } ] },
+                { day: 15, events: [ { type: "Birthday", desc: "Rebholz, Benjamin (1997), 29" } ] },
+                { day: 18, events: [ { type: "Birthday", desc: "Potenza, Leo Anthony (2024), 2" }, { type: "Birthday", desc: "Varano, Jordan (1979), 47" } ] },
+                { day: 19, events: [ { type: "Birthday", desc: "Barry, Patricia (1958), 68" } ] },
+                { day: 23, events: [ { type: "Birthday", desc: "Ficalora, Michael (1959), 67" }, { type: "Birthday", desc: "Sampson, Jeffry Regoord (1971), 55" } ] },
+                { day: 24, events: [ { type: "Birthday", desc: "Hart, Andrew (1963), 63" } ] },
+                { day: 26, events: [ { type: "Birthday", desc: "Roberts, Fallon Kathryn (2022), 4" } ] },
+                { day: 27, events: [ { type: "Birthday", desc: "Rebholz, Sawyer Belle (2022), 4" }, { type: "Anniversary", desc: "Brescia, Rose and McEntee, John (2000), 26" }, { type: "Birthday", desc: "Dibble, Ryan (1990), 36" } ] },
+                { day: 28, events: [ { type: "Anniversary", desc: "Wallace, Tracy and Hart, Daniel Edward (1979), 47" } ] },
+                { day: 30, events: [ { type: "Birthday", desc: "Teresi, Shea (1991), 35" }, { type: "Birthday", desc: "Teresi, Connor (1991), 35" } ] }
+            ],
+            "May": [
+                { day: 1, events: [ { type: "Anniversary", desc: "McDaniel, Geena and Hart, Michael (2021), 5" } ] },
+                { day: 2, events: [ { type: "Birthday", desc: "Burdick, Matthew (1986), 40" }, { type: "Birthday", desc: "Piarulli, Jennifer (1978), 48" } ] },
+                { day: 3, events: [ { type: "Birthday", desc: "McEntee, Melissa (1985), 41" }, { type: "Birthday", desc: "Lewis, Craig (1979), 47" } ] },
+                { day: 7, events: [ { type: "Birthday", desc: "Kuczka, Noah Joseph, Birth" } ] },
+                { day: 8, events: [ { type: "Birthday", desc: "Oddsen, Chris (1985), 41" } ] },
+                { day: 9, events: [ { type: "Birthday", desc: "Hart, Virginia (1953), 73" }, { type: "Birthday", desc: "Rebholz, Suzanne (1988), 38" } ] },
+                { day: 10, events: [ { type: "Birthday", desc: "Hart, Brendan (1997), 29" }, { type: "Birthday", desc: "Neary, Patrick (1995), 31" } ] },
+                { day: 12, events: [ { type: "Birthday", desc: "Dempsey, Eloise Emory (2017), 9" } ] },
+                { day: 15, events: [ { type: "Birthday", desc: "Ficalora, Elisha (1982), 44" }, { type: "Birthday", desc: "Hart, Joseph (1956), 70" }, { type: "Birthday", desc: "MacNeil, Winifred Rose (2024), 2" } ] },
+                { day: 17, events: [ { type: "Anniversary", desc: "D'Ettore, Nicole and McEntee, Jeffrey (2008), 18" }, { type: "Birthday", desc: "Caschera, Harper Mary (2019), 7" }, { type: "Birthday", desc: "Reed, Aubrey (1986), 40" }, { type: "Birthday", desc: "Teresi, Riley (1989), 37" } ] },
+                { day: 19, events: [ { type: "Birthday", desc: "Hart, Philip (1965), 61" }, { type: "Birthday", desc: "Rivers, Mary (1935), 91" }, { type: "Anniversary", desc: "Neary, Alexandria Watkins and Neary, Brian (2023), 3" } ] },
+                { day: 20, events: [ { type: "Birthday", desc: "Mahoney, Marcy (1962), 64" } ] },
+                { day: 22, events: [ { type: "Birthday", desc: "Rebholz, Kathryn (1961), 65" }, { type: "Birthday", desc: "Burdick, Bridgid Elizabeth (2019), 7" } ] },
+                { day: 26, events: [ { type: "Anniversary", desc: "Hertlein, Karen and Hart, Joseph (1988), 38" }, { type: "Anniversary", desc: "Predmore, Kathryn and Lazo, Olsi (2005), 21" }, { type: "Birthday", desc: "Rebholz, Steven (1963), 63" }, { type: "Birthday", desc: "Hart, Mason Alexander (2013), 13" }, { type: "Birthday", desc: "Strong, Elizabeth (1962), 64" }, { type: "Anniversary", desc: "Verrioli, Andrea and Rebholz, David (1991), 35" }, { type: "Anniversary", desc: "Cougevan, Bridget and Hart, Christopher (1989), 37" }, { type: "Birthday", desc: "Kelly, Barbara (1959), 67" } ] },
+                { day: 27, events: [ { type: "Anniversary", desc: "Mahoney, Marcy and Hart, Douglas (1994), 32" } ] },
+                { day: 29, events: [ { type: "Birthday", desc: "Predmore, Kristine (1984), 42" }, { type: "Birthday", desc: "McEntee, John (1979), 47" } ] },
+                { day: 30, events: [ { type: "Birthday", desc: "Hart, Charles (1994), 32" } ] },
+                { day: 31, events: [ { type: "Anniversary", desc: "Ewart, Ginny and Hart, John (2003), 23" }, { type: "Birthday", desc: "Rebholz, Claire (1997), 29" } ] }
+            ],
+            "June": [
+                { day: 1, events: [ { type: "Birthday", desc: "Burdick, Lyla Kathryn (2020), 6" } ] },
+                { day: 3, events: [ { type: "Birthday", desc: "Hart, Douglas (1969), 57" } ] },
+                { day: 5, events: [ { type: "Anniversary", desc: "Hiscock, Christine and Hart, Philip (1987), 39" }, { type: "Birthday", desc: "Bringley, Donald (1987), 39" } ] },
+                { day: 6, events: [ { type: "Birthday", desc: "Kuczka, Alex (1997), 29" }, { type: "Birthday", desc: "Hart, Christine (1953), 73" } ] },
+                { day: 7, events: [ { type: "Birthday", desc: "Hart, Daniel (1998), 28" }, { type: "Birthday", desc: "MacNeil, Zach (1994), 32" } ] },
+                { day: 9, events: [ { type: "Birthday", desc: "Hart, Susan (1957), 69" }, { type: "Birthday", desc: "McEntee, James (2007), 19" } ] },
+                { day: 10, events: [ { type: "Anniversary", desc: "Hart, Josephine and Baily, Brent (2000), 26" } ] },
+                { day: 11, events: [ { type: "Anniversary", desc: "Hart, Sally and Terreri, John (1976), 50" }, { type: "Birthday", desc: "Terreri, Ezra Daniel (2019), 7" }, { type: "Birthday", desc: "Burdick, Jacob Matthew (2025), 1" } ] },
+                { day: 12, events: [ { type: "Birthday", desc: "Cisco, Megan (1987), 39" } ] },
+                { day: 13, events: [ { type: "Birthday", desc: "Hart, Maria (1989), 37" } ] },
+                { day: 14, events: [ { type: "Birthday", desc: "Neary, Michael (1960), 66" } ] },
+                { day: 15, events: [ { type: "Birthday", desc: "Richmond, Julie (1963), 63" } ] },
+                { day: 17, events: [ { type: "Birthday", desc: "Burdick, Maureen (1987), 39" }, { type: "Anniversary", desc: "Hart, Christine and Gray, Jon (1990), 36" }, { type: "Birthday", desc: "Hart, Bridget (1994), 32" }, { type: "Anniversary", desc: "Wallace, Chelsea and Burdick, Matthew (2017), 9" }, { type: "Birthday", desc: "Bringley, Jase (2015), 11" }, { type: "Birthday", desc: "Hart, Kathleen Ann (1958), 68" } ] },
+                { day: 22, events: [ { type: "Birthday", desc: "Gray, Jon (1960), 66" }, { type: "Birthday", desc: "Lewis, Grace (2011), 15" } ] },
+                { day: 23, events: [ { type: "Birthday", desc: "Hart, Patrick (1962), 64" }, { type: "Anniversary", desc: "Hart, Alexander and Cox, Davie (2018), 8" } ] },
+                { day: 24, events: [ { type: "Birthday", desc: "Hart, Thomas William (2007), 19" } ] },
+                { day: 25, events: [ { type: "Birthday", desc: "Clifford, Conor Lynch (1989), 37" }, { type: "Birthday", desc: "Connelly, Ryan Paul (2006), 20" } ] },
+                { day: 27, events: [ { type: "Birthday", desc: "Lazo, Olsi (1976), 50" }, { type: "Birthday", desc: "Hart, Kathryn (1963), 63" }, { type: "Anniversary", desc: "Herrema, Kate and Higgins, Robert (2014), 12" } ] },
+                { day: 28, events: [ { type: "Birthday", desc: "Hart, Francis David (2019), 7" } ] },
+                { day: 29, events: [ { type: "Birthday", desc: "Shea, Bridget (1987), 39" } ] }
+            ],
+            "July": [
+                { day: 2, events: [ { type: "Birthday", desc: "Hart, Eileen (1960), 66" }, { type: "Birthday", desc: "Nally, Daniel Patrick (1987), 39" } ] },
+                { day: 5, events: [ { type: "Birthday", desc: "Shea, Kathryn (1984), 42" }, { type: "Birthday", desc: "Shea, Liam (1985), 41" } ] },
+                { day: 7, events: [ { type: "Birthday", desc: "Hart, Margaret (1962), 64" } ] },
+                { day: 8, events: [ { type: "Birthday", desc: "Hart, John (1964), 62" }, { type: "Birthday", desc: "Cuyler, Cate Marie (1990), 36" } ] },
+                { day: 9, events: [ { type: "Birthday", desc: "Joslyn, Justin (1987), 39" } ] },
+                { day: 13, events: [ { type: "Birthday", desc: "Terreri, Laura (1986), 40" }, { type: "Anniversary", desc: "Hart, Jena and Joslyn, Justin (2013), 13" } ] },
+                { day: 14, events: [ { type: "Birthday", desc: "Rebholz, Elena (1993), 33" } ] },
+                { day: 16, events: [ { type: "Anniversary", desc: "McEntee, Melissa and Stolte, Mark (2011), 15" } ] },
+                { day: 17, events: [ { type: "Anniversary", desc: "Wirth, Elaine and Hart, Gregory (1982), 44" }, { type: "Birthday", desc: "Baldwin, Andrew (1976), 50" } ] },
+                { day: 19, events: [ { type: "Birthday", desc: "Baldwin, Eloise (2010), 16" } ] },
+                { day: 20, events: [ { type: "Birthday", desc: "Hart, Kylie (1991), 35" }, { type: "Death", desc: "McEntee, Paul (2019), 7" }, { type: "Birthday", desc: "Machado, Dave (1987), 39" }, { type: "Birthday", desc: "Neary, Aidan Kathryn (2024), 2" } ] },
+                { day: 21, events: [ { type: "Birthday", desc: "Hart, Daniel Edward (1956), 70" } ] },
+                { day: 22, events: [ { type: "Birthday", desc: "Rebholz, Martin (1959), 67" } ] },
+                { day: 23, events: [ { type: "Birthday", desc: "Smith, Lucille (1937), 89" }, { type: "Birthday", desc: "Rebholz, Sarah (1990), 36" }, { type: "Anniversary", desc: "Piarulli, Jennifer and McEntee, John (2005), 21" } ] },
+                { day: 25, events: [ { type: "Birthday", desc: "Connelly, Andrew (2003), 23" }, { type: "Birthday", desc: "Wright, Megan (1990), 36" }, { type: "Birthday", desc: "Higgins, Drew (2018), 8" } ] },
+                { day: 26, events: [ { type: "Birthday", desc: "Hart, Philip (1985), 41" }, { type: "Birthday", desc: "Dempsey, Pat (1963), 63" }, { type: "Birthday", desc: "Cox, Davie (1988), 38" } ] },
+                { day: 28, events: [ { type: "Anniversary", desc: "Summers, Cheryl and Terreri, Joseph (2003), 23" } ] },
+                { day: 30, events: [ { type: "Birthday", desc: "Oddsen, Brody George (2022), 4" }, { type: "Anniversary", desc: "Rebholz, Sarah and Galindo, Diego García (2023), 3" }, { type: "Anniversary", desc: "Shea, Bridget and Kehrer, Ryan (2012), 14" }, { type: "Anniversary", desc: "Oke, Courtney and Bringley, Michael (2010), 16" } ] }
+            ],
+            "August": [
+                { day: 4, events: [ { type: "Birthday", desc: "Hart, David (1993), 33" }, { type: "Anniversary", desc: "Shea, Kathryn and Lewis, Craig (2007), 19" } ] },
+                { day: 6, events: [ { type: "Birthday", desc: "Richter, Megan (1991), 35" } ] },
+                { day: 8, events: [ { type: "Anniversary", desc: "Cubelli, Johanna and Bringley, Donald (2014), 12" }, { type: "Birthday", desc: "Roberts, Fletcher (2016), 10" } ] },
+                { day: 9, events: [ { type: "Birthday", desc: "Hart, Christopher (1961), 65" } ] },
+                { day: 11, events: [ { type: "Birthday", desc: "Hart, Kathy (2025), 1" } ] },
+                { day: 12, events: [ { type: "Anniversary", desc: "Druschel, Sue and Hart, Mark (1983), 43" } ] },
+                { day: 13, events: [ { type: "Anniversary", desc: "McEntee, Mary Lee and Bringley, Bob (1977), 49" } ] },
+                { day: 15, events: [ { type: "Anniversary", desc: "Hart, Patricia and Ficalora, Michael (1981), 45" }, { type: "Anniversary", desc: "Hart, Mary Beth and Teresi, Thomas (1987), 39" } ] },
+                { day: 16, events: [ { type: "Birthday", desc: "Joslyn, Mia Kate (2019), 7" } ] },
+                { day: 18, events: [ { type: "Birthday", desc: "Hart, Cormac Daniel (2016), 10" }, { type: "Birthday", desc: "Hart, Michael (2009), 17" }, { type: "Birthday", desc: "Hart, Callan Richard (2014), 12" }, { type: "Birthday", desc: "Hart, Thomas (1990), 36" }, { type: "Anniversary", desc: "Burdick, Maureen and Caschera, Tom (2018), 8" }, { type: "Birthday", desc: "Baldwin, Vaughn (2008), 18" } ] },
+                { day: 19, events: [ { type: "Birthday", desc: "Pahlow, Bree (1988), 38" } ] },
+                { day: 20, events: [ { type: "Birthday", desc: "Walsh, Michael (1998), 28" }, { type: "Anniversary", desc: "Rebholz, Diane and Verrioli, Michael (1994), 32" } ] },
+                { day: 21, events: [ { type: "Birthday", desc: "Hart, Niall (1995), 31" } ] },
+                { day: 22, events: [ { type: "Birthday", desc: "Milard, Donny (1980), 46" } ] },
+                { day: 24, events: [ { type: "Birthday", desc: "Hart, Judy (1966), 60" }, { type: "Birthday", desc: "Higgins, Reese Elizabeth (2022), 4" } ] },
+                { day: 25, events: [ { type: "Anniversary", desc: "Hart, Kathryn and Dempsey, Pat (1990), 36" }, { type: "Birthday", desc: "McEntee, Maiya Rose (2012), 14" } ] },
+                { day: 26, events: [ { type: "Birthday", desc: "Clifford, Carl (1960), 66" }, { type: "Birthday", desc: "Connelly, Christopher (1974), 52" } ] },
+                { day: 27, events: [ { type: "Birthday", desc: "Walsh, Bryan (1999), 27" } ] },
+                { day: 28, events: [ { type: "Birthday", desc: "Spreng, Natalie Jane (2015), 11" }, { type: "Birthday", desc: "Hart, Theodore Magee (2020), 6" }, { type: "Birthday", desc: "Neary, Alexandria Watkins (1999), 27" } ] },
+                { day: 29, events: [ { type: "Anniversary", desc: "Cisco, Megan and Rebholz, Ryan (2015), 11" } ] },
+                { day: 30, events: [ { type: "Anniversary", desc: "Burdick, Kelly and Dibble, Ryan (2014), 12" } ] },
+                { day: 31, events: [ { type: "Birthday", desc: "Gray, Celina Trotta (1977), 49" } ] }
+            ],
+            "September": [
+                { day: 1, events: [ { type: "Birthday", desc: "Wallace, Chelsea (1985), 41" } ] },
+                { day: 2, events: [ { type: "Birthday", desc: "Baldwin, Avett (2013), 13" } ] },
+                { day: 3, events: [ { type: "Anniversary", desc: "Hart, Eileen and Shea, Tim (1982), 44" }, { type: "Anniversary", desc: "Hart, Danielle and Machado, Dave (2021), 5" } ] },
+                { day: 6, events: [ { type: "Birthday", desc: "Teresi, Thomas (1957), 69" } ] },
+                { day: 12, events: [ { type: "Birthday", desc: "Hart, Josephine (1970), 56" } ] },
+                { day: 16, events: [ { type: "Anniversary", desc: "McEntee, Sara and Connelly, Christopher (2000), 26" }, { type: "Anniversary", desc: "Dempsey, Molly and Roberts, Kris (2017), 9" } ] },
+                { day: 17, events: [ { type: "Birthday", desc: "Hart, Edward Leon (2009), 17" } ] },
+                { day: 18, events: [ { type: "Birthday", desc: "Terreri, Jill (1979), 47" } ] },
+                { day: 20, events: [ { type: "Anniversary", desc: "Strong, Elizabeth and Hart, Matthew (1985), 41" }, { type: "Birthday", desc: "Sampson, Tom (2018), 8" }, { type: "Anniversary", desc: "Ficalora, Elisha and Milard, Donny (2014), 12" } ] },
+                { day: 21, events: [ { type: "Anniversary", desc: "Bond, Erin and Rebholz, Steven (1985), 41" } ] },
+                { day: 24, events: [ { type: "Anniversary", desc: "Hart, Susan and Predmore, Dennis (1976), 50" } ] },
+                { day: 25, events: [ { type: "Birthday", desc: "Hart, Emily Elizabeth (2009), 17" } ] },
+                { day: 26, events: [ { type: "Birthday", desc: "Ramos, Rose Sally (2018), 8" } ] },
+                { day: 28, events: [ { type: "Birthday", desc: "Hart, Erin (1993), 33" }, { type: "Birthday", desc: "Rebholz, Pamela (1992), 34" } ] },
+                { day: 30, events: [ { type: "Birthday", desc: "Bringley, Kate (1991), 35" } ] }
+            ],
+            "October": [
+                { day: 1, events: [ { type: "Birthday", desc: "Swisher, William (2015), 11" } ] },
+                { day: 3, events: [ { type: "Anniversary", desc: "Moorhead, Margaret and Higgins, Daniel (2020), 6" } ] },
+                { day: 4, events: [ { type: "Birthday", desc: "Dibble, Beckham Craig (2021), 5" } ] },
+                { day: 5, events: [ { type: "Birthday", desc: "Hart, Alexander (1989), 37" } ] },
+                { day: 6, events: [ { type: "Anniversary", desc: "Kelly, Barbara and Rebholz, Martin (1984), 42" }, { type: "Birthday", desc: "Bringley, Bob (1955), 71" }, { type: "Birthday", desc: "Hart, Mary Beth (1956), 70" }, { type: "Birthday", desc: "Spreng, Nicholas Andrew (1981), 45" } ] },
+                { day: 7, events: [ { type: "Anniversary", desc: "Wright, Megan and Burdick, Sean (2017), 9" } ] },
+                { day: 9, events: [ { type: "Birthday", desc: "Dibble, Matthew (2018), 8" } ] },
+                { day: 13, events: [ { type: "Anniversary", desc: "Hart, Julie Ann and Clifford, Carl (1987), 39" }, { type: "Birthday", desc: "McEntee, Joseph (1977), 49" } ] },
+                { day: 14, events: [ { type: "Birthday", desc: "Hart, Timothy (1958), 68" } ] },
+                { day: 17, events: [ { type: "Birthday", desc: "Hart, Mark (1958), 68" } ] },
+                { day: 18, events: [ { type: "Birthday", desc: "Hart, Patricia (1956), 70" }, { type: "Anniversary", desc: "Richter, Megan and Hart, Thomas (2018), 8" }, { type: "Anniversary", desc: "Terreri, Jill and Ramos, Nestor (2014), 12" } ] },
+                { day: 22, events: [ { type: "Birthday", desc: "Caschera, Haven Hart (2023), 3" }, { type: "Anniversary", desc: "Barry, Patricia and Hart, Andrew (1990), 36" }, { type: "Birthday", desc: "Caschera, Hailey Bridget (2021), 5" }, { type: "Birthday", desc: "Rebholz, David (1965), 61" }, { type: "Birthday", desc: "Gray, Jonathon Tratta (1980), 46" } ] },
+                { day: 24, events: [ { type: "Birthday", desc: "Hart, Katherine (1995), 31" } ] },
+                { day: 25, events: [ { type: "Anniversary", desc: "Kalweit, Kimberly and Hart, Brian (1991), 35" } ] },
+                { day: 26, events: [ { type: "Birthday", desc: "Galindo, Diego García (1990), 36" } ] }
+            ],
+            "November": [
+                { day: 2, events: [ { type: "Birthday", desc: "Hart, Michael (1991), 35" } ] },
+                { day: 4, events: [ { type: "Birthday", desc: "Verrioli, Andrea (1966), 60" } ] },
+                { day: 9, events: [ { type: "Anniversary", desc: "Pahlow, Bree and Ficalora, Martin (2013), 13" } ] },
+                { day: 11, events: [ { type: "Anniversary", desc: "LaForge, Amy and Hart, Timothy (2001), 25" }, { type: "Birthday", desc: "Baily, Ethan (2005), 21" }, { type: "Birthday", desc: "Hart, Sarah (1965), 61" }, { type: "Birthday", desc: "Hart, Hailey Ann (2024), 2" }, { type: "Anniversary", desc: "Hart, Katherine and MacNeil, Zach (2022), 4" } ] },
+                { day: 12, events: [ { type: "Birthday", desc: "Hart, Brian (1964), 62" } ] },
+                { day: 13, events: [ { type: "Birthday", desc: "Ewart, Ginny (1961), 65" } ] },
+                { day: 14, events: [ { type: "Death", desc: "Pilittere, Ron (2006), 20" } ] },
+                { day: 15, events: [ { type: "Birthday", desc: "Burdick, Sean (1982), 44" }, { type: "Birthday", desc: "Bringley, Phoebe (2018), 8" } ] },
+                { day: 17, events: [ { type: "Birthday", desc: "Rebholz, Shannon (1994), 32" } ] },
+                { day: 18, events: [ { type: "Death", desc: "Hart, Daniel (2024), 2" }, { type: "Birthday", desc: "Roberts, Finley Eileen (2016), 10" } ] },
+                { day: 19, events: [ { type: "Birthday", desc: "Swisher, Erin (2000), 26" }, { type: "Birthday", desc: "Clifford, Bridget Mary (1990), 36" } ] },
+                { day: 20, events: [ { type: "Birthday", desc: "Hart, Bennett Connor (2014), 12" } ] },
+                { day: 21, events: [ { type: "Birthday", desc: "Rebholz, David (2003), 23" } ] },
+                { day: 24, events: [ { type: "Birthday", desc: "Rebholz, Diane (1969), 57" }, { type: "Birthday", desc: "Shaw, Brian Benjamin (2002), 24" } ] },
+                { day: 26, events: [ { type: "Birthday", desc: "Potenza, Michael Anthony (1992), 34" }, { type: "Anniversary", desc: "Bringley, Elizabeth and Varano, Jordan (2021), 5" } ] },
+                { day: 27, events: [ { type: "Birthday", desc: "McEntee, Cash James (2013), 13" } ] },
+                { day: 28, events: [ { type: "Birthday", desc: "Dempsey, Molly (1992), 34" } ] },
+                { day: 29, events: [ { type: "Birthday", desc: "Nally, Stephen Christopher (1989), 37" } ] }
+            ],
+            "December": [
+                { day: 1, events: [ { type: "Birthday", desc: "Stolte, Mark (1984), 42" } ] },
+                { day: 2, events: [ { type: "Birthday", desc: "Hart, Jena (1989), 37" } ] },
+                { day: 3, events: [ { type: "Birthday", desc: "Neary, Brian (1999), 27" } ] },
+                { day: 7, events: [ { type: "Birthday", desc: "Dempsey, Jacob (1990), 36" } ] },
+                { day: 9, events: [ { type: "Birthday", desc: "Predmore, Kathryn (1980), 46" } ] },
+                { day: 10, events: [ { type: "Birthday", desc: "Sampson, Timothy Regoord (1968), 58" } ] },
+                { day: 11, events: [ { type: "Birthday", desc: "Baily, Brent (1961), 65" } ] },
+                { day: 12, events: [ { type: "Birthday", desc: "Shea, Tim (1955), 71" }, { type: "Birthday", desc: "Terreri, Joseph (1981), 45" } ] },
+                { day: 14, events: [ { type: "Birthday", desc: "Rebholz, Kathryn (1991), 35" } ] },
+                { day: 15, events: [ { type: "Birthday", desc: "Walsh, Robert (1995), 31" }, { type: "Birthday", desc: "Bringley, Michael (1983), 43" }, { type: "Birthday", desc: "Hart, Suellen (1959), 67" } ] },
+                { day: 16, events: [ { type: "Anniversary", desc: "Rebholz, Suzanne and Oddsen, Chris (2018), 8" } ] },
+                { day: 17, events: [ { type: "Anniversary", desc: "McMahon, Amanda and Neary, Patrick (2021), 5" } ] },
+                { day: 19, events: [ { type: "Birthday", desc: "Hart, Sally (1954), 72" }, { type: "Birthday", desc: "Cubelli, Johanna (1986), 40" } ] },
+                { day: 20, events: [ { type: "Anniversary", desc: "Neary, Allison and Kuczka, Alex (2025), 1" }, { type: "Death", desc: "Hart, Leon George (1956), 70" }, { type: "Birthday", desc: "Hertlein, Karen (1957), 69" } ] },
+                { day: 21, events: [ { type: "Birthday", desc: "Walsh, Timothy (2020), 6" }, { type: "Birthday", desc: "Kehrer, Kendall Rose (2013), 13" } ] },
+                { day: 22, events: [ { type: "Anniversary", desc: "Gray, Celina Trotta and Baldwin, Andrew (2006), 20" } ] },
+                { day: 23, events: [ { type: "Birthday", desc: "McEntee, Adriana Marie (2009), 17" }, { type: "Birthday", desc: "McEntee, Bryana Rose (2009), 17" } ] },
+                { day: 27, events: [ { type: "Birthday", desc: "Bringley, Brody (2012), 14" } ] },
+                { day: 30, events: [ { type: "Birthday", desc: "Hart, Brendon Daniel (1982), 44" } ] },
+                { day: 31, events: [ { type: "Anniversary", desc: "Richmond, Julie and Hart, Patrick (1989), 37" } ] }
+            ]
+        };
+
+        function getTypeColor(type) {
+            if (type === "Birthday") return "bg-emerald-100 text-emerald-800";
+            if (type === "Anniversary") return "bg-orange-100 text-orange-800";
+            return "bg-slate-200 text-slate-800"; // Death color
+        }
+
+        function renderCalendar() {
+            const container = document.getElementById('calendar-container');
+            container.innerHTML = "";
+            for (const [month, days] of Object.entries(calendarData)) {
+                const section = document.createElement('div');
+                section.className = "bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden";
+                
+                let dayHTML = "";
+                // Sort days just in case data added out of order
+                days.sort((a,b) => a.day - b.day).forEach(d => {
+                    // Group by type
+                    const grouped = d.events.reduce((acc, curr) => {
+                        acc[curr.type] = acc[curr.type] || [];
+                        acc[curr.type].push(curr.desc);
+                        return acc;
+                    }, {});
+
+                    let eventList = "";
+                    for(const [type, descs] of Object.entries(grouped)) {
+                        eventList += `
+                            <div class="flex flex-col gap-1 mb-2">
+                                <span class="event-tag ${getTypeColor(type)} inline-block w-fit mb-1">${type}</span>
+                                ${descs.map(desc => `<span class="text-slate-600 text-sm block">${desc}</span>`).join('')}
+                            </div>
+                        `;
+                    }
+
+                    dayHTML += `
+                        <li class="border-b border-slate-50 pb-3 last:border-0">
+                            <div class="flex gap-4 items-start">
+                                <span class="font-bold text-emerald-700 w-8 text-lg">${d.day}</span>
+                                <div class="flex flex-col gap-2 w-full">
+                                    ${eventList}
+                                </div>
+                            </div>
+                        </li>
+                    `;
+                });
+
+                section.innerHTML = `
+                    <button onclick="toggleMonth('${month}')" class="w-full flex items-center justify-between p-6 hover:bg-emerald-50 transition-colors">
+                        <span class="serif-font text-2xl text-emerald-900">${month}</span>
+                        <svg class="w-6 h-6 text-emerald-600 transition-transform" id="icon-${month}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="content-${month}" class="content-transition hidden-content px-6 pb-6">
+                        <ul class="space-y-4">${dayHTML}</ul>
+                    </div>
+                `;
+                container.appendChild(section);
+            }
+        }
+
+        function toggleMonth(month) {
+            const content = document.getElementById(`content-${month}`);
+            const icon = document.getElementById(`icon-${month}`);
+            content.classList.toggle('hidden-content');
+            content.classList.toggle('visible-content');
+            icon.classList.toggle('rotate-180');
+        }
+
+        window.onload = renderCalendar;
+    </script>
+</body>
+</html>
