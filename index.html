@@ -1,223 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-H2G90LQ5B2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-H2G90LQ5B2');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hart Family History</title>
+    
+    <!-- 2-Second Meta Redirect to the new site -->
+    <meta http-equiv="refresh" content="2; url=https://hartfamilytree.org">
+    
+    <title>Hart Family History - Redirecting...</title>
+    
+    <!-- Kept basic styling so the fallback message still looks on-brand -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;700&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'EB Garamond', serif;
-            color: #433A3F; /* Dark, slightly muted brown/purple for text */
-        }
-        .irish-header-alt-font {
-            font-family: 'IM Fell English SC', serif;
-        }
-        /* Password Prompt Styling - REMOVED */
-
-        /* Main Link Button Styling */
-        .main-link-button {
-            display: inline-block;
-            font-weight: 600; /* semibold */
-            padding-top: 0.75rem; /* py-3 */
-            padding-bottom: 0.75rem; /* py-3 */
-            padding-left: 1.5rem; /* px-6 */
-            padding-right: 1.5rem; /* px-6 */
-            border-radius: 0.375rem; /* rounded-md */
-            font-size: 1.125rem; /* text-lg */
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); /* shadow-md */
-            transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out, box-shadow 0.2s ease-in-out;
-            border: 1px solid transparent;
-            margin-bottom: 0.5rem; /* Add some space between buttons when they wrap */
-            text-decoration: none; /* Ensure links styled as buttons don't have underlines */
-        }
-        .main-link-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 44px 6px -2px rgba(0,0,0,0.05); /* shadow-lg */
-        }
-
-        /* Content Section Styling */
-        .content-section {
-            background-color: #FCFBF4; /* Creamy white section bg */
-            border: 2px solid #588157; /* Muted green border */
-            border-radius: 0.75rem; /* rounded-xl */
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); /* shadow-xl */
-            padding: 2rem; /* p-8 */
-            margin-bottom: 2rem; /* mb-8 */
-        }
-        .content-section h2 {
-            font-family: 'IM Fell English SC', serif;
-            color: #3A5A40; /* Darker muted green for headings */
-            font-size: 1.875rem; /* text-3xl approximation */
-            font-weight: 600; /* semibold */
-            margin-bottom: 2rem; /* mb-8 */
-        }
-        .content-section p, .content-section ul {
             color: #433A3F;
-            line-height: 1.625; /* leading-relaxed */
-        }
-        .content-section ul {
-            list-style-type: disc; /* Default disc bullets for unordered lists */
-            padding-left: 1.5rem; /* Indent list items */
-            margin-top: 1rem; /* Space above the list */
-        }
-        .content-section li {
-            margin-bottom: 0.5rem; /* Space between list items */
-        }
-        .content-section a:not(.main-link-button) { /* Apply only to text links within content, not buttons */
-            color: #588157; /* Muted green for links */
-            text-decoration: underline;
-        }
-        .content-section a:not(.main-link-button):hover {
-            color: #D97706; /* Amber-600 for link hover */
-        }
-        /* Removed .family-image-placeholder-header-dimensions as it's no longer needed */
-
-        /* Specific styling for the new feedback prompt section */
-        .feedback-prompt-section {
-            background-color: #FFF8E1; /* A very light, warm cream to stand out */
-            border-color: #D97706; /* Amber border to match the feedback button color */
-            box-shadow: 0 15px 20px -5px rgba(0,0,0,0.1), 0 6px 6px -3px rgba(0,0,0,0.08); /* Slightly stronger shadow */
-            padding: 0.75rem 2rem; /* py-3 px-8 - Thinner from top to bottom */
-        }
-        .feedback-prompt-section h2 {
-            color: #D97706; /* Amber for the heading to match the border */
-            margin-bottom: 0.5rem; /* Add a small margin below title */
-            font-size: 1.5rem; /* Slightly smaller for banner effect */
-            text-align: center; /* Center title */
-            width: auto; /* Remove fixed width */
-        }
-        .feedback-prompt-section p {
-            font-size: 1rem; /* Slightly smaller text for banner effect */
-            margin-bottom: 0; /* Remove bottom margin to make it thinner */
-            text-align: center; /* Center text */
-            width: auto; /* Remove fixed width */
-        }
-
-        /* Main content is now visible by default */
-        #mainContent {
-            display: block; /* Changed from 'none' to 'block' */
+            background-color: #FCFBF4;
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-beige-100 to-green-100 min-h-screen flex flex-col items-center pt-10 pb-10 px-4">
+<body class="min-h-screen flex flex-col items-center justify-center px-4 text-center">
 
-    <!-- Password Prompt Container - REMOVED -->
-
-    <div id="mainContent" class="container mx-auto max-w-3xl">
-        <header class="text-center mb-12 py-10 shadow-lg" style="background-color: #386641; border-radius: 0.5rem;">
-            <h1 class="text-4xl md:text-5xl font-bold irish-header-alt-font mb-4" style="color: #F2E8CF;">Welcome to Our Family's Shared History</h1>
-            <p class="text-lg" style="color: #D4C2AD; padding-left: 1rem; padding-right: 1rem;">
-                This website is a place to review and collaboratively build our family tree.
-                Your contributions and insights are invaluable.
-            </p>
-        </header>
-
-        <div class="flex flex-wrap justify-center gap-4 md:gap-6 mb-12 text-center">
-            <a href="familyData/index.html" class="main-link-button text-white" style="background-color: #588157; border-color: #3A5A40;">
-                Family Tree Data
-            </a>
-            <a href="familyTree.html" class="main-link-button text-white" style="background-color: #A3B18A; border-color: #588157;">
-                Family Tree Visual
-            </a>
-            <a href="familyPhotos.html" class="main-link-button text-white font-semibold" style="background-color: #D97706; /* Amber-600 */ border-color: #B45309; /* Amber-700 */">
-                Family Photo Albums
-            </a>
-            <a href="familyCalendar/Calendar/2026/fullyearlinked.html" class="main-link-button text-white font-semibold" style="background-color: #3E863D; border-color: #2A5D29;">
-                Family Calendar
-            </a>
-            <a href="familyStats.html" class="main-link-button text-white font-semibold" style="background-color: #009B77; border-color: #588157;">
-                Family Tree Statistics
-            </a>
-            <!-- NEW BUTTON COLOR UPDATED HERE -->
-            <a href="https://pewu.github.io/topola-viewer/#/view?url=https://rhart1716.github.io/HartFamilyReunion/reports/Family Tree Viewer File1.ged" class="main-link-button text-white font-semibold" style="background-color: #5D4037; border-color: #6E4A45;">
-                Interactive Family Tree Viewer
-            </a>
-            <!-- New 'Family Tree Files and Backups' button -->
-            <a href="https://drive.google.com/drive/folders/1k7t0_2YsH6WWdUfP8U6H1jIY2UjH_BBQ?usp=sharing" class="main-link-button text-white font-semibold" style="background-color: #8B4513; border-color: #5A2C0D;">
-                Family Tree Files and Backups
-            </a>
-        </div>
-
-        <!-- NEW: Section to urge feedback -->
-        <section class="content-section feedback-prompt-section">
-            <div class="flex flex-col items-center justify-center gap-2">
-                <h2 class="irish-header-alt-font">Family Tree Review Needed!</h2>
-                <p class="text-lg">
-                    Please take a moment to ensure your family's information is correct. Start by clicking the 'Family Tree Data' button above, 
-                    then find your family and select a person to review.
-                    <br>
-                    To submit any changes, just use the "Provide Feedback or Updates" link below.
-                </p>
-            </div>
-        </section>
-        
-        <section class="content-section">
-            <h2 class="text-center">Recent Updates</h2>
-            <p class="text-center">Stay up-to-date with the latest additions and changes to our family history project!</p>
-            <ul>
-                <li><strong>August 16, 2025:</strong> Added a link to the Family Tree Files and Backups on Google Drive.  This is where you can find excel versions of the family tree info, the GRAMPS database files and the website backup files.</li>
-                <li><strong>July 21, 2025:</strong> Added link to an interactive family tree viewer.</li>
-                <li><strong>July 14, 2025:</strong> Reunion 2025 photo album has been added to the Family Photo Albums section.</li>
-                <li><strong>May 25, 2025:</strong> Added family statistics section to provide a more visual look into our family.</li>
-            </ul>
-            
-        </section>
-        
-        <section class="content-section">
-            <h2 class="text-center">Your Feedback Helps to Keep Our Family Tree Updated</h2>
-            <p class="text-center">
-                Have a correction, or just want to provide a suggestion? Let us know using the link below.
-            </p>
-           <div class="mt-6 text-center">
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLScKuGN7kDbxzCM5hGJy0YVnT3qFfD0Au0mN8CZERqD-_iFikQ/viewform?usp=dialog"
-        target="_blank" rel="noopener noreferrer"
-        class="main-link-button text-white" 
-        style="background-color: #3E863D; border-color: #2A5D29;">
-        Provide Feedback or Updates
-    </a>
-</div>
-        </section>
-
-        <!-- New Section for Questions -->
-        <section class="content-section text-center">
-            <h2 class="text-center">General Questions?</h2>
-            <p class="text-lg">
-                For general questions about the website or family history project (not for family tree updates - please use the feedback form above for these),
-                please feel free to reach out to us at:
-                <br>
-                <a href="mailto:ryanehart@gmail.com" class="text-green-700 hover:text-amber-600 font-semibold">ryanehart@gmail.com</a>
-            </p>
-        </section>
-        
-        <footer class="text-center mt-12 py-6 border-t" style="border-color: #A3B18A;">
-            <p class="font-semibold" style="color: #3A5A40;">&copy; <span id="currentYear"></span> Hart Family. All rights reserved.</p>
-            <p class="text-sm mt-1" style="color: #D97706;">Fáilte!</p>
-        </footer>
-
+    <div class="max-w-lg p-8 border-2 border-[#588157] rounded-xl shadow-md bg-white">
+        <p class="text-xl leading-relaxed">
+            This page has moved. If you are not redirected automatically, 
+            <a href="https://hartfamilytree.org" style="color: #588157; text-decoration: underline; font-weight: 500;">
+                please click here
+            </a>.
+        </p>
     </div>
-
-   <script>
-        // Function to initialize page elements like the current year in the footer
-        function initializePage() {
-            if(document.getElementById('currentYear')) {
-                document.getElementById('currentYear').textContent = new Date().getFullYear();
-            }
-        }
-
-        // Initialize page elements directly on load since password protection is removed
-        initializePage();
-    </script>
 
 </body>
 </html>
