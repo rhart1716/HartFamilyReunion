@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gramps API Test</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .event { border-bottom: 1px solid #eee; padding: 10px 0; }
+        .error { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Family Event Feed (API Test)</h1>
+    <div id="status">Connecting to GrampsWeb...</div>
+    <div id="output"></div>
+
+    <script>
+        // Configuration from your Master Config and Conversation History
+        const API_BASE = "https://tree.hartfamilytree.org"; 
+        const USERNAME = "rhart1716";
+        const PASSWORD = "Hitme1234!"; // Updated per current credentials
+
+        async function getEvents() {
+            const status = document.getElementById('status');
+            const output = document.getElementById('output');
+
+            try {
+                // 1. Authenticate to get a Token
+                const loginRes = await fetch(`${API_BASE}/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username: USERNAME, password: PASSWORD })
+                });
+
+                if (!loginRes.ok) throw new Error("Login failed. Check credentials.");
+                const { access_token } = await loginRes.json();
+                status.innerText = "Authenticated! Fetching events...";
+
+                // 2. Fetch Events
+                // Note: The /events endpoint returns event objects
+                const eventRes = await fetch(`${API_BASE}/events`, {
+                    headers: { 'Authorization': `Bearer ${access_token}` }
+                });
+
+                const events = await eventRes.json();
+                status.innerText = `Successfully pulled ${events.length} events.`;
+
+                // 3. Display Birthdays and Anniversaries
+                events.forEach(ev => {
+                    // Filter for Birth (type 1) or Marriage (type 3)
+                    if (ev.type_id === 1 || ev.type_id === 3) {
+                        const div = document.createElement('div');
+                        div.className = 'event';
+                        div.innerHTML = `
+                            <strong>${ev.type_name}:</strong> ${ev.description || 'Family Event'} <br>
+                            <em>Date: ${ev.date_text || 'No Date Set'}</em>
+                        `;
+                        output.appendChild(div);
+                    }
+                });
+
+            } catch (err) {
+                status.className = 'error';
+                status.innerText = `API Error: ${err.message}`;
+            }
+        }
+
+        getEvents();
+    </script>
+</body>
+</html>
