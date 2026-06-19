@@ -2,8 +2,8 @@
 1 SOUR Gramps
 2 VERS AIO64-6.0.1--1
 2 NAME Gramps
-1 DATE 17 JUN 2026
-2 TIME 13:29:50
+1 DATE 19 JUN 2026
+2 TIME 08:46:51
 1 SUBM @SUBM@
 1 FILE C:\Users\ryane\OneDrive\Documents\GitHub\HartFamilyReunion\reports\hartFamily.ged
 1 COPR Copyright (c) 2026 .
@@ -1494,9 +1494,10 @@
 2 DATE 30 SEP 1991
 1 FAMC @F0025@
 2 PEDI birth
+1 FAMS @F0094@
 1 CHAN
-2 DATE 22 JUL 2025
-3 TIME 14:39:11
+2 DATE 19 JUN 2026
+3 TIME 08:46:16
 0 @I0111@ INDI
 1 NAME Jon /Gray/
 2 TYPE birth
@@ -4064,6 +4065,18 @@
 1 CHAN
 2 DATE 17 JUN 2026
 3 TIME 13:25:01
+0 @I0314@ INDI
+1 NAME Andre /Pelletreau/
+2 TYPE birth
+2 GIVN Andre
+2 SURN Pelletreau
+1 SEX M
+1 BIRT
+2 DATE 11 OCT 1992
+1 FAMS @F0094@
+1 CHAN
+2 DATE 19 JUN 2026
+3 TIME 08:46:16
 0 @F0000@ FAM
 1 HUSB @I0000@
 1 WIFE @I0001@
@@ -5014,16 +5027,31 @@
 1 CHAN
 2 DATE 3 JUN 2026
 3 TIME 08:02:58
+0 @F0094@ FAM
+1 HUSB @I0314@
+1 WIFE @I0110@
+1 MARR
+2 DATE 1 JUN 2024
+1 CHAN
+2 DATE 19 JUN 2026
+3 TIME 08:46:16
 0 @S0000@ SOUR
 1 TITL Setup Sync
 1 NOTE @N0002@
 1 CHAN
 2 DATE 6 APR 2026
 3 TIME 11:46:54
+0 @S0001@ SOUR
+1 TITL Update made by Bill
+1 NOTE @N0003@
+1 CHAN
+2 DATE 18 JUN 2026
+3 TIME 08:30:11
 0 @N0000@ NOTE Make updates from 2024 calendar
 0 @N0001@ NOTE 
 1 CONT     
 0 @N0002@ NOTE Setup sync with GRAMPS desktop
+0 @N0003@ NOTE Two memebers added and a death date added.
 0 @O0000@ OBJE
 1 FILE C:/Users/ryane/OneDrive/Desktop/Family Tree Backup/Website/Site Images/shamrock.jpg
 2 FORM jpg
